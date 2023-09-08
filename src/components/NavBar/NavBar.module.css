@@ -1,0 +1,88 @@
+.navBar_container{
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 2rem;
+  height: 3.0rem;
+  min-width: 100dvw;
+  box-shadow: 0 0 1rem #888888;
+}
+
+.link{
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
+  transition: 0.4s;
+}
+.link:hover{
+  background-color: #cecece;
+}
+.icon_link{
+  transition: 0.4s;
+}
+.link:hover > .icon_link{
+  transform: rotate(180deg);
+}
+
+
+
+.input_find{
+  padding: 0.25rem 1rem;
+  padding-right: 1.8rem;
+  border-radius: 1rem;
+  border: 2px solid #888888;
+  outline: none;
+  background-color: transparent;
+  max-width: 12rem;
+
+  transition: 0.4s;
+}
+.input_find:focus{
+  background-color: #dfdfdf;
+  box-shadow: 0 0 0.8rem #888888;
+}
+
+.icon_find{
+  position: absolute;
+  right: 0.6rem;
+  color: #717171;
+  height: 100%;
+  flex-grow: 1;
+  transition: 0.4s;
+}
+.input_find:focus + .icon_find{
+  color: #000000;
+}
+
+
+.button_cart{
+  padding: 0 0.5rem;
+  color: #445058;
+  border: 2px solid #445058;
+  border-radius: 0.5rem;
+  font-size: 1.3rem;
+  transition: 0.4s;
+}
+.button_cart:hover{
+  color: inherit;
+  box-shadow: 0 0 0.8rem #888888;
+}
+
+.button_login{
+  padding: 0 0.5rem;
+  color: #cecece;
+  background-color: #445058;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: 0.4s;
+}
+.button_login:hover{
+  color: inherit;
+  border: 2px solid #445058;
+  background-color: transparent;
+  box-shadow: 0 0 0.8rem #888888;
+}

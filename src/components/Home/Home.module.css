@@ -1,0 +1,42 @@
+.img_container{
+  width: 50%;
+  aspect-ratio: 1/1.3;
+  position: relative;
+  filter: drop-shadow(0 0 0.8rem #445058);
+  max-height: 600px;
+  display: flex;
+  justify-content: center;
+}
+
+
+.btn_buy{
+  padding: 0.5rem 0.8rem;
+  background-color: transparent;
+  border: 3px solid #445058;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: 0.4s;
+}
+.btn_buy:hover{
+  color: inherit;
+  border: 3px solid #445058;
+  background-color: #cecece;
+  box-shadow: 0 0 0.8rem #445058;
+}
+
+
+.btn_sell{
+  padding: 0.5rem 0.8rem;
+  color: #cecece;
+  background-color: #445058;
+  border: 3px solid transparent;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: 0.4s;
+}
+.btn_sell:hover{
+  color: inherit;
+  border: 3px solid #445058;
+  background-color: #cecece;
+  box-shadow: 0 0 0.8rem #445058;
+}
