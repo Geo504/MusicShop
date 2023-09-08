@@ -3,18 +3,19 @@ import Link from 'next/link'
 import style from './NavBar.module.css'
 import { LuMusic2 } from 'react-icons/lu'
 import { IoIosArrowDown } from 'react-icons/io'
-import { ImSearch } from 'react-icons/im'
-import { BiCartAlt } from 'react-icons/bi'
+import { ImSearch } from 'react-icons/im';
+import { BiCartAlt } from 'react-icons/bi';
 
 export default function NavBar() {
   return (
     <header className={style.navBar_container}>
-      <Link href={'/'} className='flex items-center text-xl'>
+
+      <Link href={'/'} className={style.brand_container}>
         <LuMusic2 />
         <h2 className='font-semibold'>MusicShop</h2>
       </Link>
 
-      <ul className='flex'>
+      <ul className={style.li_container}>
         <li>
           <button href={'/products'} className={style.link_btn}>
             Products
@@ -35,8 +36,9 @@ export default function NavBar() {
 
         <li>
           <button className={style.link_btn}>
-            All Instruments
+            Instruments
             <IoIosArrowDown className={style.icon_link} />
+
             <div className={style.products_links}>
               <Link href={'/instruments'} className={style.link}>
                 All Instruments
@@ -54,6 +56,7 @@ export default function NavBar() {
           <button className={style.link_btn}>
             Vinyl
             <IoIosArrowDown className={style.icon_link} />
+
             <div className={style.products_links}>
               <Link href={'/vinyl'} className={style.link}>
                 Vinyl

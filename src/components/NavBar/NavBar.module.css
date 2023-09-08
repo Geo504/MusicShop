@@ -9,8 +9,31 @@
   box-shadow: 0 0 1rem #888888;
   background-color: #e0e0e0dc;
   backdrop-filter: blur(5px);
-  z-index: 500;
+  z-index: 250;
 }
+
+
+.brand_container{
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+}
+
+.li_container{
+  display: flex;
+}
+@media screen and (max-width: 950px){
+  .navBar_container{
+    justify-content: flex-end;
+    padding: 0rem 0.5rem;
+  }
+  .brand_container,
+  .li_container{
+    display: none;
+  }
+}
+
+
 
 .link_btn{
   position: relative;
