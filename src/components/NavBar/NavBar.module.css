@@ -7,9 +7,13 @@
   height: 3.0rem;
   min-width: 100dvw;
   box-shadow: 0 0 1rem #888888;
+  background-color: #e0e0e0dc;
+  backdrop-filter: blur(5px);
+  z-index: 500;
 }
 
-.link{
+.link_btn{
+  position: relative;
   display: flex;
   align-items: center;
   gap: 0.1rem;
@@ -17,14 +21,56 @@
   border-radius: 0.5rem;
   transition: 0.4s;
 }
-.link:hover{
-  background-color: #cecece;
+.link_btn:hover{
+  background-color: #bebebe;
 }
 .icon_link{
   transition: 0.4s;
 }
-.link:hover > .icon_link{
+.link_btn:hover > .icon_link{
   transform: rotate(180deg);
+}
+
+
+.products_links{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.6rem;
+  background-color: #e9e9e9ec;
+  border: 2px solid #445058;
+  border-radius: 0.5rem;
+  min-width: 16rem;
+
+  top: 2.6rem;
+  left: 0;
+  transform: scale(0);
+  transition: 0.2s ease-in-out;
+  transition-delay: 0.2s;
+}
+.link_btn:hover > .products_links{
+  transform: scale(1);
+}
+
+
+.link{
+  display: flex;
+  flex-direction: column;
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2rem;
+
+  transition: background-color 0.4s;
+}
+.link span{
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #445058;
+}
+.link:hover{
+  background-color: #ffffffe3;
 }
 
 
@@ -36,7 +82,7 @@
   border: 2px solid #888888;
   outline: none;
   background-color: transparent;
-  max-width: 12rem;
+  max-width: 11.2rem;
 
   transition: 0.4s;
 }
@@ -73,6 +119,8 @@
 
 .button_login{
   padding: 0 0.5rem;
+  display: flex;
+  align-items: center;
   color: #cecece;
   background-color: #445058;
   border: 2px solid transparent;

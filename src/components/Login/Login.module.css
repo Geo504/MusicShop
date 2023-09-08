@@ -1,0 +1,15 @@
+.img_container{
+  width: 50%;
+  min-width: 50dvw;
+  min-height: 100vh;
+  position: relative;
+}
+
+.aside_container{
+  position: relative;
+  width: 50dvw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
