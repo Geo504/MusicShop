@@ -5,8 +5,8 @@ import style from './Home.module.css'
 
 export default function Home() {
   return (
-    <section className='flex items-center pt-14'>
-      <div className='flex flex-col gap-4 max-w-[50%]'>
+    <section className={style.section_container} >
+      <div className={style.text_container}>
         <h1 className='text-6xl font-bold'>
           Welcome to <span className='text-[#445058]'>MusicShop</span>, the best place to conect with music.
         </h1>
@@ -24,11 +24,10 @@ export default function Home() {
       <div className={style.img_container}>
         <Image 
           src='https://i.ibb.co/D8hKSmk/pngwing-com-2.png' 
-          alt='' 
-          layout='fill'
-          style={{
-            objectFit: 'contain',
-          }} />
+          alt=''
+          fill
+          sizes='40vw'
+          style={{objectFit: 'contain'}} />
       </div>
     </section>
   )

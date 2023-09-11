@@ -14,18 +14,17 @@ export default function Login() {
           <Image 
             src='https://i.ibb.co/hYH2R6L/pngwing-com-2.png' 
             alt='' 
-            layout='fill'
-            style={{
-              objectFit: 'cover',
-            }} />
-        
+            fill
+            sizes='50vw'
+            style={{objectFit: 'cover'}} />
       </div>
 
       <div className={style.aside_container}>
         <Image 
           src='https://i.ibb.co/jHZWY6q/pngwing-com.png' 
           alt='' 
-          layout='fill'
+          fill
+          sizes='50vw'
           style={{
             objectFit: 'cover',
             zIndex: -1,

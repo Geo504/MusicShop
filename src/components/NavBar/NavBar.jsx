@@ -1,12 +1,17 @@
+'use client'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation';
+
+import LinkItem from './LinkItem/LinkItem';
 
 import style from './NavBar.module.css'
 import { LuMusic2 } from 'react-icons/lu'
-import { IoIosArrowDown } from 'react-icons/io'
 import { ImSearch } from 'react-icons/im';
 import { BiCartAlt } from 'react-icons/bi';
 
 export default function NavBar() {
+  const path = usePathname();
+
   return (
     <header className={style.navBar_container}>
 
@@ -16,59 +21,38 @@ export default function NavBar() {
       </Link>
 
       <ul className={style.li_container}>
-        <li>
-          <button href={'/products'} className={style.link_btn}>
-            Products
-            <IoIosArrowDown className={style.icon_link} />
+        <LinkItem title={'Products'} class_btn={`${path=='/products'?style.active:''}`}>
+          <Link href={'/products'} className={`${style.link}`}>
+            All Products
+            <span>Take a look of all the products</span>
+          </Link>
+          <Link href={'/products'} className={style.link}>
+            Buy Tickets Concert
+            <span>Go build some goods memories</span>
+          </Link>
+        </LinkItem>
 
-            <div className={style.products_links}>
-              <Link href={'/products'} className={style.link}>
-                All Products
-                <span>Take a look of all the products</span>
-              </Link>
-              <Link href={'/'} className={style.link}>
-                Buy Tickets Concert
-                <span>Go build some goods memories</span>
-              </Link>
-            </div>
-          </button>
-        </li>
+        <LinkItem title={'Instruments'} class_btn={`${path=='/instruments'?style.active:''}`}>
+          <Link href={'/instruments'} className={style.link}>
+            All Instruments
+            <span>Take a look of our instruments</span>
+          </Link>
+          <Link href={'/instruments'} className={style.link}>
+            New One's
+            <span>Buy something new for yourself</span>
+          </Link>
+        </LinkItem>
 
-        <li>
-          <button className={style.link_btn}>
-            Instruments
-            <IoIosArrowDown className={style.icon_link} />
-
-            <div className={style.products_links}>
-              <Link href={'/instruments'} className={style.link}>
-                All Instruments
-                <span>Take a look of our instruments</span>
-              </Link>
-              <Link href={'/'} className={style.link}>
-                New One's
-                <span>Buy something new for yourself</span>
-              </Link>
-            </div>
-          </button>
-        </li>
-
-        <li>
-          <button className={style.link_btn}>
+        <LinkItem title={'Vinyl'} class_btn={`${path=='/vinyl'?style.active:''}`}>
+          <Link href={'/vinyl'} className={style.link}>
             Vinyl
-            <IoIosArrowDown className={style.icon_link} />
-
-            <div className={style.products_links}>
-              <Link href={'/vinyl'} className={style.link}>
-                Vinyl
-                <span>Go back in time and get vintage</span>
-              </Link>
-              <Link href={'/'} className={style.link}>
-                By genre
-                <span>Lose yourself and friends with any type of music</span>
-              </Link>
-            </div>
-          </button>
-        </li>
+            <span>Go back in time and get vintage</span>
+          </Link>
+          <Link href={'/vinyl'} className={style.link}>
+            By genre
+            <span>Lose yourself and friends with any type of music</span>
+          </Link>
+        </LinkItem>
       </ul>
 
 

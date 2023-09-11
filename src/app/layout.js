@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 
 import NavBar from '../components/NavBar/NavBar.jsx'
 import MenuIcon from '@/components/NavBar/Menu/Menu'
+import PageWrapper from './page_wrapper'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,7 +18,9 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <NavBar />
         <MenuIcon />
-        {children}
+        <PageWrapper>
+          {children}
+        </PageWrapper>
       </body>
     </html>
   )

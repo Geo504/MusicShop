@@ -65,6 +65,7 @@ export default function LoginForm() {
               <input 
                 type="text" 
                 name='username'
+                id='username'
                 {...register('username')}
                 placeholder='' />
               <label htmlFor='username'>Username:</label>
@@ -77,6 +78,7 @@ export default function LoginForm() {
             <input 
               type="text" 
               name='email'
+              id='email'
               {...register('email')}
               placeholder='' />
             <label htmlFor='email'>Email:</label>
@@ -88,6 +90,7 @@ export default function LoginForm() {
             <input 
               type={`${showPassword?'text':'password'}`} 
               name='password'
+              id='password'
               {...register('password')}
               placeholder='' />
             <label htmlFor='password'>Password:</label>
