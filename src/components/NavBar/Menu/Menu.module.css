@@ -1,5 +1,5 @@
 .menu_icon{
-  position: absolute;
+  position: fixed;
   margin: 0.5rem;
   display: flex;
   align-items: center;

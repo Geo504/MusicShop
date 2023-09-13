@@ -1,0 +1,38 @@
+.card_container{
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+
+  background-color: #ededed;
+  border-radius: 0.5rem;
+  transition: 0.4s;
+}
+.card_container:hover{
+  box-shadow: 0 0 1rem #445058;
+}
+
+
+.img_container{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+  box-shadow: 0 0 0.8rem #445058d6;
+}
+
+.btn_buy{
+  padding: 0.1rem 0.9rem;
+  border: 2px solid transparent;
+  border-radius: 1rem;
+  color: #cecece;
+  background-color: #39576b;
+  font-weight: 500;
+  transition: 0.4s;
+}
+.btn_buy:hover{
+  color: inherit;
+  border: 2px solid #39576b;
+  background-color: #cecece;
+  box-shadow: 0 0 0.8rem #445058;
+}

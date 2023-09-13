@@ -9,7 +9,6 @@
 }
 .link_btn:hover{
   background-color: #cecece;
-  /* background-color: #bebebe; */
 }
 .icon_link{
   transition: 0.4s;
@@ -38,6 +37,27 @@
   transition: 0.2s ease-in-out;
   transition-delay: 0.2s;
 }
+
+.link{
+  display: flex;
+  flex-direction: column;
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2rem;
+
+  transition: background-color 0.4s;
+}
+.link span{
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #445058;
+}
+.link:hover{
+  background-color: #ffffffe3;
+}
+
+
 .link_btn:hover > .products_links{
   transform: scale(1);
 }
