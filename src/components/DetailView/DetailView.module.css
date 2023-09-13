@@ -1,0 +1,14 @@
+.product_container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  padding: 0 1rem;
+  min-width: 100%;
+}
+
+.img_container{
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1/1;
+  border-radius: 1rem;
+}

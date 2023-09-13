@@ -13,7 +13,7 @@ export default function LinkItem({ title, class_btn, routes }) {
         <div className={style.products_links}>
           {routes.map(route => {
             return(
-              <Link href={`${route.link}`} className={`${style.link}`}>
+              <Link href={`${route.link}`} key={route.link} className={`${style.link}`}>
                 {route.nameLink}
                 <span>{route.description}</span>
               </Link>

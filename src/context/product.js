@@ -5,7 +5,7 @@ export const allProducts = [
     price: '225.00',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     img:'https://i.ibb.co/jWtZr79/guitar1.webp',
-    seller: 'Seller 1',
+    seller: 'Fender',
   },
   {
     id:2,
@@ -13,7 +13,7 @@ export const allProducts = [
     price: '205.95',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     img:'https://i.ibb.co/pbpWbb7/violin.webp',
-    seller: 'Seller 1',
+    seller: 'Yamaha',
   },
   {
     id:3,

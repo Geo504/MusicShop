@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import CardProducts from '../CardProducts/CardProducts';
 import Pagination from '../Pagination/Pagination';
-import { allProducts } from './product'
+import { allProducts } from '@/context/product'
 
 import style from './Products.module.css';
 import { FiFilter } from 'react-icons/fi';
@@ -59,7 +59,7 @@ export default function Products() {
       <section className={style.product_container}>
         { products.map(product => {
           return(
-            <CardProducts key={product.id} product={product} />
+            <CardProducts key={product.id} id={product.id} product={product} />
           )
         }).slice(firstIndex, lastIndex)}
       </section>

@@ -1,22 +1,19 @@
 .img_container{
-  width: 50%;
-  min-width: 50dvw;
+  width: 100dvw;
   min-height: 100vh;
-  position: relative;
+  position: absolute;
 }
 
 .aside_container{
   position: relative;
-  width: 50dvw;
+  width: 60dvw;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 }
 @media screen and (max-width: 950px){
-  .img_container{
-    display: none;
-  }
   .aside_container{
     width: 100dvw;
   }
