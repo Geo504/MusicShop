@@ -1,0 +1,50 @@
+.btn_decrement{
+  padding: 0.2rem 0.5rem;
+  border: 2px solid #445058;
+  border-radius: 0.5rem 0 0 0.5rem;
+  background-color: #445058;
+  transition: 0.4s;
+}
+
+.btn_increment{
+  padding: 0.2rem 0.5rem;
+  border: 2px solid #445058;
+  border-radius: 0 0.5rem 0.5rem 0;
+  background-color: #445058;
+  transition: 0.4s;
+}
+.btn_decrement:hover,
+.btn_increment:hover{
+  color: #445058;
+  background-color: #cfcfcfc9;
+}
+
+.input{
+  width: 3.5rem;
+  text-align: center;
+  color: #000000;
+  background-color: #ecececb9;
+  border-top: 2px solid #445058;
+  border-bottom: 2px solid #445058;
+  outline: none;
+}
+.input[type="number"]::-webkit-inner-spin-button,
+.input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+
+.btn_addToCart{
+  padding: 0rem 0.5rem;
+  border: 2px solid #445058;
+  border-radius: 0.5rem;
+  color: whitesmoke;
+  background-color: #445058;
+  font-size: 1.1rem;
+  transition: 0.4s;
+}
+.btn_addToCart:hover{
+  color: black;
+  background-color: #cfcfcfc9;
+  box-shadow: 0 0 0.8rem #445058;
+}

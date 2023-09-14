@@ -3,17 +3,21 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation';
 
 import LinkItem from './LinkItem/LinkItem';
+import MenuIcon from './Menu/Menu'
+import Cart from '../Cart/Cart';
 import {product, instruments, vinyl} from './route'
 
 import style from './NavBar.module.css'
 import { LuMusic2 } from 'react-icons/lu'
 import { ImSearch } from 'react-icons/im';
-import { BiCartAlt } from 'react-icons/bi';
+
+
 
 export default function NavBar() {
   const path = usePathname();
 
   return (
+    <>
     <header className={style.navBar_container}>
 
       <Link href={'/'} className={style.brand_container}>
@@ -44,14 +48,16 @@ export default function NavBar() {
           <input className={style.input_find} placeholder='Search Products'></input>
           <ImSearch className={style.icon_find} />
         </div>
-        <button className={style.button_cart}>
-          <BiCartAlt />
-        </button>
+        
+        <Cart />
+
         <Link href={'/login'} className={style.button_login}>
           Login
         </Link>
       </div>
 
     </header>
+    <MenuIcon />
+    </>
   )
 }

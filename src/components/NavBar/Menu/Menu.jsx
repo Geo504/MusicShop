@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 import BurgerButton from '../BurgerButton/BurgerButton';
+import {product, instruments, vinyl} from '../route'
 
 import style from './Menu.module.css';
 import { LuMusic2 } from 'react-icons/lu';
@@ -31,32 +32,29 @@ export default function MenuIcon() {
 
           <div className='flex flex-col gap-1 min-w-full'>
             <h3 className='text-xl font-semibold'>Products</h3>
-            <Link href={'/products'} onClick={closeMenu} className={style.link}>
-              All Products
-            </Link>
-            <Link href={'/'} onClick={closeMenu} className={style.link}>
-              Buy Tickets Concert
-            </Link>
+            {product.map(route => (
+              <Link href={route.link}  key={route.link} onClick={closeMenu} className={style.link}>
+                {route.nameLink}
+              </Link>
+            ))}
           </div>
 
           <div className='flex flex-col gap-1  min-w-full'>
             <h3 className='text-xl font-semibold'>Instruments</h3>
-            <Link href={'/instruments'} onClick={closeMenu} className={style.link}>
-              All Instruments
-            </Link>
-            <Link href={'/'} onClick={closeMenu} className={style.link}>
-              New One's
-            </Link>
+            {instruments.map(route => (
+              <Link href={route.link}  key={route.link} onClick={closeMenu} className={style.link}>
+                {route.nameLink}
+              </Link>
+            ))}
           </div>
 
           <div className='flex flex-col gap-1  min-w-full'>
             <h3 className='text-xl font-semibold'>Vinyl</h3>
-            <Link href={'/vinyl'} onClick={closeMenu} className={style.link}>
-              All Vinyl
-            </Link>
-            <Link href={'/'} onClick={closeMenu} className={style.link}>
-              By genre
-            </Link>
+            {vinyl.map(route => (
+              <Link href={route.link}  key={route.link} onClick={closeMenu} className={style.link}>
+                {route.nameLink}
+              </Link>
+            ))}
           </div>
 
         </div>

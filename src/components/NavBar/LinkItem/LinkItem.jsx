@@ -11,14 +11,12 @@ export default function LinkItem({ title, class_btn, routes }) {
         <IoIosArrowDown className={style.icon_link} />
 
         <div className={style.products_links}>
-          {routes.map(route => {
-            return(
+          {routes.map(route => (
               <Link href={`${route.link}`} key={route.link} className={`${style.link}`}>
                 {route.nameLink}
                 <span>{route.description}</span>
               </Link>
-            )
-          })}
+          ))}
         </div>
       </button>
     </li>

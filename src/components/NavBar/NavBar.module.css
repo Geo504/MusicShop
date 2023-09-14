@@ -70,19 +70,6 @@
 }
 
 
-.button_cart{
-  padding: 0 0.5rem;
-  color: #445058;
-  border: 2px solid #445058;
-  border-radius: 0.5rem;
-  font-size: 1.3rem;
-  transition: 0.4s;
-}
-.button_cart:hover{
-  color: inherit;
-  box-shadow: 0 0 0.8rem #888888;
-}
-
 .button_login{
   padding: 0 0.5rem;
   display: flex;

@@ -57,11 +57,9 @@ export default function Products() {
     
     <main className='px-4 pt-2 pb-4 min-w-full'>
       <section className={style.product_container}>
-        { products.map(product => {
-          return(
-            <CardProducts key={product.id} id={product.id} product={product} />
-          )
-        }).slice(firstIndex, lastIndex)}
+        {products.map(product =>(
+          <CardProducts key={product.id} id={product.id} product={product} />
+        )).slice(firstIndex, lastIndex)}
       </section>
       <Pagination 
         products={products}

@@ -6,6 +6,7 @@ export const allProducts = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     img:'https://i.ibb.co/jWtZr79/guitar1.webp',
     seller: 'Fender',
+    tags: ['Guitar', 'Instrument', 'Electric', 'Semi-New', 'Acoustic', 'Fender', 'Rock'],
   },
   {
     id:2,
@@ -14,6 +15,7 @@ export const allProducts = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     img:'https://i.ibb.co/pbpWbb7/violin.webp',
     seller: 'Yamaha',
+    tags: ['Violin', 'Instrument', 'Clasic', 'Used', 'Yamaha'],
   },
   {
     id:3,
@@ -21,7 +23,8 @@ export const allProducts = [
     price: '225.00',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     img:'https://i.ibb.co/XVHds8X/Amplificador-Boss-Katana-Head-MKII-Musical-cedar.png',
-    seller: 'Seller 1',
+    seller: 'Boss',
+    tags: ['Guitar', 'Instrument', 'Amplifier', 'New', 'Boss', 'Fender'],
   },
   {
     id:4,
@@ -29,7 +32,8 @@ export const allProducts = [
     price: '320.00',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempor incididunt ut labore et dolore magna aliqua.',
     img:'https://i.ibb.co/jRqBNPt/coldplay.jpg',
-    seller: 'Seller 1',
+    seller: 'TicketsMaster',
+    tags: ['Coldplay', 'Concert', 'Live', 'Tickets', 'Sunday', '2023', 'Paris', 'France'],
   },
   {
     id:5,
@@ -37,7 +41,8 @@ export const allProducts = [
     price: '225.00',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     img:'https://i.ibb.co/XVHds8X/Amplificador-Boss-Katana-Head-MKII-Musical-cedar.png',
-    seller: 'Seller 1',
+    seller: 'Boss',
+    tags: ['Guitar', 'Instrument', 'Amplifier', 'New', 'Boss', 'Fender'],
   },
   {
     id:6,
@@ -45,7 +50,8 @@ export const allProducts = [
     price: '225.00',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     img:'https://i.ibb.co/jWtZr79/guitar1.webp',
-    seller: 'Seller 1',
+    seller: 'Gibson',
+    tags: ['Guitar', 'Instrument', 'Amplifier', 'New', 'Boss', 'Fender'],
   },
   {
     id:7,
@@ -53,7 +59,8 @@ export const allProducts = [
     price: '320.00',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempor incididunt ut labore et dolore magna aliqua.',
     img:'https://i.ibb.co/jRqBNPt/coldplay.jpg',
-    seller: 'Seller 1',
+    seller: 'Live Nation',
+    tags: ['Coldplay', 'Concert', 'Live', 'Tickets', 'Sunday', '2023', 'Paris', 'France'],
   },
   {
     id:8,
@@ -61,7 +68,8 @@ export const allProducts = [
     price: '205.95',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     img:'https://i.ibb.co/pbpWbb7/violin.webp',
-    seller: 'Seller 1',
+    seller: 'Yamaha',
+    tags: ['Guitar', 'Instrument', 'Amplifier', 'New', 'Boss', 'Fender'],
   },
   {
     id:9,
@@ -69,7 +77,8 @@ export const allProducts = [
     price: '310.00',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     img:'https://i.ibb.co/XVHds8X/Amplificador-Boss-Katana-Head-MKII-Musical-cedar.png',
-    seller: 'Seller 1',
+    seller: 'Fender',
+    tags: ['Guitar', 'Instrument', 'Amplifier', 'New', 'Boss', 'Fender'],
   },
   {
     id:10,
@@ -78,6 +87,7 @@ export const allProducts = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     img:'https://i.ibb.co/jWtZr79/guitar1.webp',
     seller: 'Seller 1',
+    tags: ['Guitar', 'Instrument', 'Amplifier', 'New', 'Boss', 'Fender'],
   },
   {
     id:11,
@@ -86,6 +96,7 @@ export const allProducts = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     img:'https://i.ibb.co/pbpWbb7/violin.webp',
     seller: 'Seller 1',
+    tags: ['Guitar', 'Instrument', 'Amplifier', 'New', 'Boss', 'Fender'],
   },
   {
     id:12,
@@ -94,6 +105,7 @@ export const allProducts = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     img:'https://i.ibb.co/XVHds8X/Amplificador-Boss-Katana-Head-MKII-Musical-cedar.png',
     seller: 'Seller 1',
+    tags: ['Guitar', 'Instrument', 'Amplifier', 'New', 'Boss', 'Fender'],
   },
   {
     id:13,
@@ -102,6 +114,7 @@ export const allProducts = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempor incididunt ut labore et dolore magna aliqua.',
     img:'https://i.ibb.co/jRqBNPt/coldplay.jpg',
     seller: 'Seller 1',
+    tags: ['Coldplay', 'Concert', 'Live', 'Tickets', 'Sunday', '2023', 'Paris', 'France'],
   },
   {
     id:14,
@@ -110,6 +123,7 @@ export const allProducts = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     img:'https://i.ibb.co/XVHds8X/Amplificador-Boss-Katana-Head-MKII-Musical-cedar.png',
     seller: 'Seller 1',
+    tags: ['Guitar', 'Instrument', 'Amplifier', 'New', 'Boss', 'Fender'],
   },{
     id:15,
     name:'Electro-Acoustic Guitar',
@@ -117,6 +131,7 @@ export const allProducts = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     img:'https://i.ibb.co/jWtZr79/guitar1.webp',
     seller: 'Seller 1',
+    tags: ['Guitar', 'Instrument', 'Amplifier', 'New', 'Boss', 'Fender'],
   },
   {
     id:16,
@@ -125,6 +140,7 @@ export const allProducts = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     img:'https://i.ibb.co/pbpWbb7/violin.webp',
     seller: 'Seller 1',
+    tags: ['Guitar', 'Instrument', 'Amplifier', 'New', 'Boss', 'Fender'],
   },
   {
     id:17,
@@ -133,6 +149,7 @@ export const allProducts = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     img:'https://i.ibb.co/XVHds8X/Amplificador-Boss-Katana-Head-MKII-Musical-cedar.png',
     seller: 'Seller 1',
+    tags: ['Guitar', 'Instrument', 'Amplifier', 'New', 'Boss', 'Fender'],
   },
   {
     id:18,
@@ -141,6 +158,7 @@ export const allProducts = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempor incididunt ut labore et dolore magna aliqua.',
     img:'https://i.ibb.co/jRqBNPt/coldplay.jpg',
     seller: 'Seller 1',
+    tags: ['Guitar', 'Instrument', 'Amplifier', 'New', 'Boss', 'Fender'],
   },
   {
     id:19,
@@ -149,6 +167,7 @@ export const allProducts = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     img:'https://i.ibb.co/XVHds8X/Amplificador-Boss-Katana-Head-MKII-Musical-cedar.png',
     seller: 'Seller 1',
+    tags: ['Guitar', 'Instrument', 'Amplifier', 'New', 'Boss', 'Fender'],
   },
   {
     id:20,
@@ -157,6 +176,7 @@ export const allProducts = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     img:'https://i.ibb.co/jWtZr79/guitar1.webp',
     seller: 'Seller 1',
+    tags: ['Guitar', 'Instrument', 'Amplifier', 'New', 'Boss', 'Fender'],
   },
   {
     id:21,
@@ -165,6 +185,7 @@ export const allProducts = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempor incididunt ut labore et dolore magna aliqua.',
     img:'https://i.ibb.co/jRqBNPt/coldplay.jpg',
     seller: 'Seller 1',
+    tags: ['Guitar', 'Instrument', 'Amplifier', 'New', 'Boss', 'Fender'],
   },
   {
     id:22,
@@ -173,5 +194,6 @@ export const allProducts = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     img:'https://i.ibb.co/XVHds8X/Amplificador-Boss-Katana-Head-MKII-Musical-cedar.png',
     seller: 'Seller 1',
+    tags: ['Guitar', 'Instrument', 'Amplifier', 'New', 'Boss', 'Fender'],
   },
 ]
