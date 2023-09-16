@@ -25,7 +25,9 @@ export default function Cart() {
       setSubtotal(0);
       return;
     } else{
-      const total = cart.map(product => parseFloat(product.price)).reduce((a, b) => a + b);
+      const total = cart.map(
+        product => parseFloat(product.price* product.quantity)
+      ).reduce((a, b) => a + b);
       setSubtotal(total.toFixed(2));
     }
   },[cart]);

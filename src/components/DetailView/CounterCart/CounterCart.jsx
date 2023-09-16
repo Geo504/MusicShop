@@ -43,7 +43,9 @@ export default function CounterCart({product}) {
         </button>
       </div>
 
-      <button className={style.btn_addToCart} onClick={() => addProduct(product)}>
+      <button
+        className={style.btn_addToCart}
+        onClick={() => addProduct({...product, quantity: count})}>
         Add to Cart
       </button>
     </section>

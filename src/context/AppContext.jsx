@@ -7,7 +7,12 @@ export const AppProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
   const addProduct = (product) => {
-    if (cart.some(item => item.id === product.id)) return;
+    if (cart.some(item => item.id === product.id)) {
+      setCart(cart.map(item => {
+        if (item.id === product.id) return product;
+        return item;
+      }))
+    }
     else setCart([...cart, product]);
   }
   const deleteProduct = (id) => {

@@ -15,7 +15,7 @@ export default function AddCartBtn({classBtn, text, product}) {
     )
   };
   return (
-    <button className={classBtn} onClick={() => addProduct(product)}>
+    <button className={classBtn} onClick={() => addProduct({...product, quantity: 1})}>
       {text}
     </button>
   )

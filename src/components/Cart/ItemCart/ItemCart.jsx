@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from 'next/image';
 
 import { useAppContext } from '@/context/AppContext';
@@ -8,11 +8,12 @@ import { FiPlus, FiMinus } from 'react-icons/fi';
 import { BsTrash2 } from 'react-icons/bs';
 
 export default function ItemCart({product}) {
-  const {store, actions} = useAppContext();
-  const [count, setCount] = useState(1);
+  const { actions } = useAppContext();
+  const [count, setCount] = useState(product.quantity);
 
+  const addProduct = actions.addProduct;
   const deleteProduct = actions.deleteProduct;
-  const priceToNum = parseFloat(product.price)
+  const priceToNum = parseFloat(product.price);
 
 
   const increment = () => {
@@ -22,6 +23,10 @@ export default function ItemCart({product}) {
     if (count === 1) return;
     else setCount(prev=> prev - 1);
   }
+
+  useEffect(() => {
+    addProduct({...product, quantity: count});
+  },[count])
 
 
   return (
