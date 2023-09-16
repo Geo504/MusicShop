@@ -69,7 +69,7 @@ export default function DetailView({id}) {
             <span className='text-base'>€</span>
           </p>
 
-          <CounterCart />
+          <CounterCart product={product}/>
           
           <div>
             <h5 className='font-semibold text-lg'>About this product</h5>

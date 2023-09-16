@@ -4,6 +4,7 @@ import Link from 'next/link';
 import style from './CardProducts.module.css';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { IoPricetagsOutline } from 'react-icons/io5';
+import AddCartBtn from './AddButton/AddCartBtn';
 
 export default function CardProducts({product, id}) {
   return (
@@ -30,9 +31,10 @@ export default function CardProducts({product, id}) {
         </Link>
 
         <div className='flex justify-center mt-1'>
-          <button className={style.btn_buy}>
-            Add to Cart
-          </button>
+          <AddCartBtn
+           classBtn={style.btn_add_cart}
+           text='Add to Cart'
+           product={product} />
         </div>
 
         <AiOutlineHeart className='absolute top-2 right-2 text-2xl text-[#dfdfdfce]'/>
