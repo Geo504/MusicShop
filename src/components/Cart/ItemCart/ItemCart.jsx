@@ -6,8 +6,9 @@ import { useAppContext } from '@/context/AppContext';
 import style from './ItemCart.module.css';
 import { FiPlus, FiMinus } from 'react-icons/fi';
 import { BsTrash2 } from 'react-icons/bs';
+import Link from "next/link";
 
-export default function ItemCart({product}) {
+export default function ItemCart({product, hideCart}) {
   const { actions } = useAppContext();
   const [count, setCount] = useState(product.quantity);
 
@@ -33,14 +34,16 @@ export default function ItemCart({product}) {
     <>
     <section className='flex rounded-lg overflow-hidden min-h-[4.6rem]'>
 
-      <div className={style.img_container}>
-        <Image 
-          src={product.img} 
-          alt=''
-          fill
-          sizes='20vw'
-          style={{objectFit: 'cover'}} />
-      </div>
+        <div className={style.img_container}>
+          <Link href={`/products/id/${product.id}`} onClick={hideCart}>
+            <Image 
+              src={product.img} 
+              alt=''
+              fill
+              sizes='20vw'
+              style={{objectFit: 'cover'}} />
+          </Link>
+        </div>
 
       <div className='px-2 pb-2 bg-[#ffffff] flex-grow flex flex-col justify-between'>
         <div>

@@ -61,7 +61,7 @@ export default function Cart() {
           <>
           <div className={style.cart_list_container}>
             {cart.map(product => (
-              <ItemCart key={product.id} product={product} />
+              <ItemCart key={product.id} product={product} hideCart={closeCart}/>
             ))}
           </div>
   
