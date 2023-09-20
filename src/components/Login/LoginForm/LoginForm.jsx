@@ -2,9 +2,13 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useRouter } from 'next/navigation';
 
+import { useAppContext } from '@/context/AppContext';
 import { loginSchema } from '../../../schemas/loginSchema';
 import { signUpSchema } from '../../../schemas/signUpSchema';
+import { getAuth } from '@/services/getAuth';
+import { createUser } from '@/services/createUser';
 
 import style from './LoginForm.module.css'
 import { FiMail } from 'react-icons/fi';
@@ -16,9 +20,14 @@ import {
   AiOutlineEye
 } from 'react-icons/ai';
 
+
+
 export default function LoginForm() {
+  const {actions} = useAppContext();
   const [loginMode, setLoginMode] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
+  const setUserInfo = actions.setUserInfo;
+  const router = useRouter();
 
   const {register, handleSubmit, reset, formState: {errors}} = useForm({
     resolver: yupResolver(loginMode?loginSchema:signUpSchema),
@@ -29,9 +38,23 @@ export default function LoginForm() {
     reset();
   }
 
-  const onSubmit = handleSubmit((data) => {
-    console.log(data);
-    reset();
+  const onSubmit = handleSubmit( async(data) => {
+    if (loginMode){
+      const userData = await getAuth(data);
+      if (!userData) return;
+      else{
+        setUserInfo(userData);
+        alert('Welcome!!!');
+        router.push('/');
+        return reset();
+      }
+    } else {
+      const userData = await createUser(data);
+      if (!userData) return;
+
+      alert('User created successfully!');
+      return reset();
+    }
   });
 
 

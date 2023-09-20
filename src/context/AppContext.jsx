@@ -4,6 +4,7 @@ import { createContext, useContext, useMemo, useState } from "react";
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
+  const [userInfo, setUserInfo] = useState({});
   const [cart, setCart] = useState([]);
 
   const addProduct = (product) => {
@@ -25,6 +26,7 @@ export const AppProvider = ({ children }) => {
   }, [cart]);
 
   const actions = {
+    setUserInfo,
     addProduct,
     deleteProduct
   }
