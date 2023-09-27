@@ -1,0 +1,15 @@
+.option_card{
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.6rem;
+  min-height: 4.5rem;
+  border: 2px solid #445058;
+  border-radius: 0.5rem;
+  background-color: rgba(224, 228, 231, 0.847);
+
+  transition: 0.4s;
+}
+.option_card:hover{
+  box-shadow: 0 0 1rem #445058;
+}
