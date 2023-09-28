@@ -7,14 +7,18 @@ import { addProductSchema } from '../../schemas/addProductSchema';
 import default_img from '../../../public/default_img.png';
 
 import style from './AddProduct.module.css'
-import { BiImageAdd } from 'react-icons/bi';
+import { BiImageAdd, BiPlusMedical } from 'react-icons/bi';
+import { BsTrash2 } from 'react-icons/bs';
 import { LuPackage } from 'react-icons/lu';
 import { IoPricetagsOutline } from 'react-icons/io5';
 import { TbIcons } from 'react-icons/tb';
 import { RxPencil2 } from 'react-icons/rx';
+import { PiTagSimpleLight } from 'react-icons/pi';
 
 export default function AddProduct() {
   const [imageUrl, setImageUrl] = useState('');
+  const [tags, setTags] = useState([]);
+  const [inputTag, setInputTag] = useState('');
 
   const {register, handleSubmit, reset, formState: {errors}} = useForm({
     resolver: yupResolver(addProductSchema),
@@ -24,11 +28,28 @@ export default function AddProduct() {
     setImageUrl('https://i.ibb.co/jWtZr79/guitar1.webp');
     register('img', { value: 'https://i.ibb.co/jWtZr79/guitar1.webp' });
   }
+  const deleteImage = () => {
+    setImageUrl('');
+    register('img', { value: '' });
+  }
+
+
+  const addTag = (newtag) => {
+    if (newtag.trim() === '') return;
+    else{
+      setTags([...tags, newtag]);
+      setInputTag('');
+    }
+  }
+
 
   const onSubmit = handleSubmit( async(data) => {
+    data.tags = tags;
+    alert('Added successfully');
     console.log(data);
-    alert('Sended successfully');
     setImageUrl('');
+    setInputTag('');
+    setTags([]);
     reset();
   });
 
@@ -44,8 +65,8 @@ export default function AddProduct() {
       <form className={style.form} onSubmit={onSubmit}>
 
         <div className={style.data_container}>
-          <div className={style.img_container}>
 
+          <div className={style.img_container}>
             <Image 
               src={imageUrl || default_img} 
               alt=''
@@ -54,9 +75,15 @@ export default function AddProduct() {
               style={{objectFit: 'cover'}} />
             <button
               type='button'
-              className='absolute top-2 left-2 '
+              className='absolute top-2 left-2'
               onClick={addingImage}>
-              <BiImageAdd className=' text-4xl text-[#fff]'/>
+              <BiImageAdd className='text-4xl text-[#fff]'/>
+            </button>
+            <button
+              type='button'
+              className='absolute top-2 right-2'
+              onClick={deleteImage}>
+              <BsTrash2 className={style.trash_icon}/>
             </button>
             {imageUrl==='' && <span>{errors.img?.message}</span>}
           </div>
@@ -125,7 +152,48 @@ export default function AddProduct() {
               </div>
             </div>
 
+            <div className={style.tag_input_container}>
+              <PiTagSimpleLight className='text-[#fff] text-4xl mr-1'/>
+
+              <div className='flex gap-2 flex-col w-full'>
+                <div className='relative flex gap-1 w-full'>
+                  <label htmlFor='tag'>Tag:</label>
+                  <input 
+                    type="text"
+                    id='tag'
+                    placeholder=''
+                    value={inputTag}
+                    onChange={(e) => setInputTag(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        e.preventDefault();
+                        addTag(inputTag);
+                      }
+                    }}
+                  />
+                  <button
+                    type='button'
+                    className='absolute top-1 right-1 text-[#445058]'
+                    onClick={() => addTag(inputTag)}
+                  >
+                    <BiPlusMedical />
+                  </button>
+                </div>
+
+                <ul className={style.tag_list}>
+                  {tags.length === 0 && 
+                    <i className='text-[#445058]'>No tags added...</i>
+                  }
+                  {tags.map((item, index) => (
+                    <li key={index} className={style.tag}>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
+
         </div>
 
         <button className={style.btn_submit} type='submit'>Add to Market</button>
