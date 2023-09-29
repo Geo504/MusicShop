@@ -1,4 +1,5 @@
 import express from 'express';
+import fileUpload from 'express-fileupload';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
@@ -13,6 +14,7 @@ const app = express();
 
 app.use(morgan('dev'));
 app.use(express.json());
+app.use(fileUpload());
 app.use(cookieParser());
 
 

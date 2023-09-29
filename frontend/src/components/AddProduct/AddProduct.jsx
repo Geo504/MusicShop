@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Image from 'next/image'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { addProductSchema } from '../../schemas/addProductSchema';
+import { uploadImage } from '../../services/uploadImage';
 import default_img from '../../../public/default_img.png';
+import addproduct from '../../../public/addproduct.png';
 
 import style from './AddProduct.module.css'
 import { BiImageAdd, BiPlusMedical } from 'react-icons/bi';
@@ -19,14 +21,23 @@ export default function AddProduct() {
   const [imageUrl, setImageUrl] = useState('');
   const [tags, setTags] = useState([]);
   const [inputTag, setInputTag] = useState('');
+  const imgInputRef = useRef(null);
 
   const {register, handleSubmit, reset, formState: {errors}} = useForm({
     resolver: yupResolver(addProductSchema),
   });
 
-  const addingImage = () => {
-    setImageUrl('https://i.ibb.co/jWtZr79/guitar1.webp');
-    register('img', { value: 'https://i.ibb.co/jWtZr79/guitar1.webp' });
+  const addingImage = async(e) => {
+    if (!e.target.files || e.target.files.length === 0) return;
+
+    const formData = new FormData();
+    formData.append('file', e.target.files[0]);
+
+    const data = await uploadImage(formData);
+
+    setImageUrl(data.url);
+    register('img', { value: data.url });
+    imgInputRef.current.value = '';
   }
   const deleteImage = () => {
     setImageUrl('');
@@ -56,6 +67,16 @@ export default function AddProduct() {
 
   return (
     <>
+    <div className={style.background}>
+      <Image 
+        src={addproduct} 
+        alt=''
+        height={'100%'}
+        sizes='50vw'
+        style={{objectFit: 'contain'}}
+        className='' />
+    </div>
+
     <header className='self-start px-4 mt-14'>
       <h1 className='text-4xl font-bold'>Add New Product</h1>
       <p className='text-[#445058]'>Add a new product for sell in the market place.</p>
@@ -73,18 +94,24 @@ export default function AddProduct() {
               fill
               sizes='40vw'
               style={{objectFit: 'cover'}} />
-            <button
-              type='button'
-              className='absolute top-2 left-2'
-              onClick={addingImage}>
+
+            <label htmlFor="file" className='absolute top-2 left-2'>
               <BiImageAdd className='text-4xl text-[#fff]'/>
-            </button>
+            </label>
+            <input
+              type='file'
+              id='file'
+              className={style.file_input}
+              onChange={(e)=>addingImage(e)}
+              ref={imgInputRef}/>
+
             <button
               type='button'
               className='absolute top-2 right-2'
               onClick={deleteImage}>
               <BsTrash2 className={style.trash_icon}/>
             </button>
+
             {imageUrl==='' && <span>{errors.img?.message}</span>}
           </div>
 
@@ -131,7 +158,9 @@ export default function AddProduct() {
                   <option value="">Choose a category...</option>
                   <option value="Concert">Concert Ticket</option>
                   <option value="Instrument">Instrument</option>
+                  <option value="Accessories">Accessories</option>
                   <option value="Vinyl">Vinyl</option>
+                  <option value="Service">Service</option>
                   <option value="Clothes">Clothes</option>
                 </select>
                 {<span>{errors.category?.message}</span>}

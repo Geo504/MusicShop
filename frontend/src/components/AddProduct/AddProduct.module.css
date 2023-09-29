@@ -1,3 +1,17 @@
+.background{
+  position: absolute;
+  right: 0;
+  max-height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+@media screen and (max-width: 850px){
+  .background{
+    display: none;
+  }
+}
+
+
 .form_container{
   align-self: flex-start;
   margin-top: 0.5rem;
@@ -12,7 +26,8 @@
   margin-bottom: 1rem;
   padding: 1rem;
   border-radius: 0.5rem;
-  background-color: #f3f3f3bc;
+  background-color: #ffffff75;
+  backdrop-filter: blur(8px);
 }
 .data_container{
   display: flex;
@@ -28,6 +43,12 @@
   position: relative;
   border-radius: 0.5rem;
 }
+.file_input{
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  display: none;
+}
 .img_container span{
   position: absolute;
   right: 1rem;
@@ -40,7 +61,7 @@
     flex-direction: column;
   }
   .img_container{
-    width: 100%;
+    aspect-ratio: 1/1;
   }
 }
 
@@ -93,12 +114,7 @@
 }
 
 
-/* .input_container .tag_input_container{
-  position: relative;
-  display: flex;
-  gap: 0.25rem;
-  width: 100%;
-} */
+
 .tag_input_container{
   display: flex;
   align-items: center;
