@@ -3,8 +3,9 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
 
-  background-color: #ededed;
+  min-height: 24rem;
   border-radius: 0.5rem;
   transition: 0.4s;
 }
@@ -14,17 +15,17 @@
 
 
 .img_container{
-  position: relative;
+
+  position: absolute;
   width: 100%;
-  aspect-ratio: 1/1;
-  box-shadow: 0 0 0.8rem #445058d6;
+  height: 100%;
 }
 
 .btn_add_cart{
   padding: 0.1rem 0.9rem;
   border: 2px solid transparent;
   border-radius: 1rem;
-  color: #cecece;
+  color: white;
   background-color: #39576b;
   font-weight: 500;
   transition: 0.4s;

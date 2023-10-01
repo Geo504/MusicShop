@@ -1,4 +1,6 @@
+"use client"
 import { useState, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -26,6 +28,7 @@ export default function AddForm() {
   const [tags, setTags] = useState([]);
   const [inputTag, setInputTag] = useState('');
   const imgInputRef = useRef(null);
+  const {push} = useRouter();
 
   const {register, handleSubmit, reset, formState: {errors}} = useForm({
     resolver: yupResolver(addProductSchema),
@@ -78,12 +81,8 @@ export default function AddForm() {
       return;
     }
     else{
+      push('/profile');
       alert('Added successfully');
-      setLoadingSubmit(false);
-      setImageUrl('');
-      setInputTag('');
-      setTags([]);
-      reset();
     }
   });
 
@@ -169,7 +168,7 @@ export default function AddForm() {
                 >
                   <option value="">Choose a category...</option>
                   <option value="Concert">Concert Ticket</option>
-                  <option value="Instrument">Instrument</option>
+                  <option value="Instruments">Instruments</option>
                   <option value="Accessories">Accessories</option>
                   <option value="Vinyl">Vinyl</option>
                   <option value="Service">Service</option>

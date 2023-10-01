@@ -6,8 +6,8 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: #a3a3a3;
-  --background-end-rgb: #dadada;
+  --background-start-rgb: #c5c5c5;
+  --background-end-rgb: #dbdbdb;
 }
 
 @media (prefers-color-scheme: dark) {

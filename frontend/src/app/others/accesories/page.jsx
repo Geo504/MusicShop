@@ -5,14 +5,15 @@ import Products from '@/components/Products/Products';
 import { getAllProducts } from '@/services/getProducts'
 
 
-export default async function ProductsView() {
+export default async function AccesoriesView() {
   const products = await getAllProducts();
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center overflow-x-hidden">
+
       <HeaderProduct
-        title='All Products'
-        subtitle='See and buy all the products in the store'
+        title='Accesories'
+        subtitle='Find all your favorite accesories'
       />
 
       <Suspense fallback={<div>Loading...</div>}>

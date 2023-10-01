@@ -6,7 +6,7 @@ import { useAppContext } from '@/context/AppContext';
 import LinkItem from './LinkItem/LinkItem';
 import MenuIcon from './Menu/Menu'
 import Cart from '../Cart/Cart';
-import {product, instruments, vinyl} from './route'
+import {product, instruments, others} from './route'
 
 import style from './NavBar.module.css'
 import { LuMusic2 } from 'react-icons/lu'
@@ -41,9 +41,9 @@ export default function NavBar() {
           routes={instruments} />
 
         <LinkItem 
-          title={'Vinyl'} 
-          class_btn={`${path=='/vinyl'?style.active:''}`}
-          routes={vinyl} />
+          title={'Others'} 
+          class_btn={`${path.includes('/others')?style.active:''}`}
+          routes={others} />
       </ul>
 
 

@@ -10,3 +10,13 @@
     display: none;
   }
 }
+
+
+.btn_link{
+  border-bottom: 2px solid transparent;
+  transition: 0.4s;
+}
+.btn_link:hover{
+  color: black;
+  border-bottom: 2px solid #445058c7;
+}

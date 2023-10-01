@@ -1,8 +1,7 @@
-import { useState, useEffect, Suspense } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-// import { allProducts } from '@/context/product';
+
 import { getOneProduct } from '@/services/getProducts'
 import CounterCart from './CounterCart/CounterCart';
 
@@ -12,32 +11,21 @@ import { IoPricetagsOutline } from 'react-icons/io5';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 
 
-export default function DetailView({id}) {
-  const [product, setProduct] = useState({});
+export default async function DetailView({id}) {
+  const product = await getOneProduct(id);
 
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const productData = await getOneProduct(id);
-      setProduct(productData);
-    }
-    fetchData();
-  }, []);
-
-
-
-  if (Object.keys(product).length === 0) {
-    return (
-      <div>Loading...</div>
-    )
-  }
-  else return (
+  return (
     <div className='max-w-[1400px] w-full'>
 
       <header className='self-start mt-14 px-4 flex items-center text-[#445058] text-sm'>
-        <Link href={'/products'} className={style.btn_link}>Products</Link>
+        <Link href={'/products'} className={style.btn_link}>
+          Products
+        </Link>
         <MdKeyboardArrowRight className='text-base' />
-        <span>{product.category}</span>
+        <Link href={`/${product.category.toLowerCase()}`} className={style.btn_link}>
+          {product.category}
+        </Link>
         <MdKeyboardArrowRight className='text-base' />
         <span className='font-semibold text-[#000]'>{product.name}</span>
       </header>
