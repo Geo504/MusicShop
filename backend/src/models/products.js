@@ -24,6 +24,11 @@ export const Product = sequelize.define('products',{
     allowNull: false,
     trim: true
   },
+  category: {
+    type: DataTypes.STRING(35),
+    allowNull: false,
+    trim: true
+  },
   img: {
     type: DataTypes.STRING(255),
     allowNull: false,

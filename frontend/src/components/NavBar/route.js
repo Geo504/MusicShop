@@ -7,7 +7,7 @@ export const product = [
   {
     nameLink: 'Buy Tickets Concert',
     description: 'Go build some goods memories',
-    link: '/tikets_concert'
+    link: '/concert'
   }
 ]
 
@@ -18,21 +18,21 @@ export const instruments = [
     link: '/instruments'
   },
   {
-    nameLink: "New One's",
-    description: 'Buy something new for yourself',
-    link: '/instruments/new'
+    nameLink: "Vinyl",
+    description: 'Go back in time and get vintage',
+    link: '/vinyl'
   }
 ]
 
-export const vinyl = [
+export const others = [
   {
-    nameLink: 'All Vinyl',
-    description: 'Go back in time and get vintage',
-    link: '/vinyl'
+    nameLink: 'Accesories',
+    description: 'Find your favorite accesories',
+    link: '/others/accesories'
   },
   {
-    nameLink: 'New Vinyl',
-    description: 'Lose yourself and friends with any type of music',
-    link: '/vinyl/new'
+    nameLink: 'Clothes',
+    description: 'Changing the way you look',
+    link: '/others/clothes'
   }
 ]

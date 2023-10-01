@@ -1,0 +1,22 @@
+.background{
+  position: absolute;
+  right: 0;
+  max-height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+@media screen and (max-width: 850px){
+  .background{
+    display: none;
+  }
+}
+
+
+.btn_link{
+  border-bottom: 2px solid transparent;
+  transition: 0.4s;
+}
+.btn_link:hover{
+  color: black;
+  border-bottom: 2px solid #445058c7;
+}

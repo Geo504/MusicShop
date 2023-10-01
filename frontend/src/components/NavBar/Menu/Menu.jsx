@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 import BurgerButton from '../BurgerButton/BurgerButton';
-import {product, instruments, vinyl} from '../route'
+import {product, instruments, others} from '../route'
 
 import style from './Menu.module.css';
 import { LuMusic2 } from 'react-icons/lu';
@@ -49,8 +49,8 @@ export default function MenuIcon() {
           </div>
 
           <div className='flex flex-col gap-1  min-w-full'>
-            <h3 className='text-xl font-semibold'>Vinyl</h3>
-            {vinyl.map(route => (
+            <h3 className='text-xl font-semibold'>Others</h3>
+            {others.map(route => (
               <Link href={route.link}  key={route.link} onClick={closeMenu} className={style.link}>
                 {route.nameLink}
               </Link>

@@ -44,17 +44,17 @@ export default function LoginForm() {
       if (!userData) return;
       else{
         setUserInfo(userData);
-        alert('Welcome!!!');
         push('/');
-        return reset();
+        alert('Welcome!!!');
+        return;
       }
     } else {
       const userData = await createUser(data);
       if (!userData) return;
 
-      alert('User created successfully!');
       reset();
       setLoginMode(true);
+      alert('User created successfully!');
       return;
     }
   });

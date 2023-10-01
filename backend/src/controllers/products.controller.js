@@ -1,9 +1,11 @@
 import { Op } from 'sequelize';
 import {sequelize} from '../db/db.js';
+import {v2 as cloudinary} from 'cloudinary';
 
 import { User } from "../models/users.js";
 import { Product } from "../models/products.js";
 import { Tag } from '../models/tags.js';
+
 
 export const getProducts = async (req, res) => {
   try{
@@ -42,8 +44,41 @@ export const getProduct = async (req, res) => {
 }
 
 
+export const uploadImg = async (req, res) => {
+  cloudinary.config({ 
+    cloud_name: process.env.API_CLOUD_NAME, 
+    api_key: process.env.API_CLOUD_KEY, 
+    api_secret: process.env.API_CLOUD_SECRET 
+  });
+
+  try{
+    if (!req.files || Object.keys(req.files).length === 0) {
+      return res.status(400).json({ 
+        message: 'No file uploaded', 
+      });
+    }
+    const file = req.files.file;
+    const buffer = Buffer.from(file.data.buffer);
+
+    const response = await new Promise((resolve, reject) => {
+      cloudinary.uploader.upload_stream({}, (err, result) => {
+        if (err) {
+          reject(err);
+        };
+        resolve(result);
+      }).end(buffer);
+    });
+
+    return res.json({url: response.secure_url});
+  }
+  catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+}
+
+
 export const createProduct = async (req, res) => {
-  const { name, price, description, img, tags } = req.body;
+  const { name, price, description, img, tags, category } = req.body;
 
   try{
     const newProduct = await Product.create({
@@ -51,6 +86,7 @@ export const createProduct = async (req, res) => {
       price,
       description,
       img,
+      category,
       user_id: req.user.id,
     });
     if (tags){
@@ -74,13 +110,14 @@ export const createProduct = async (req, res) => {
 
 
 export const updateProduct = async (req, res) => {
-  const { name, price, description, img, tags } = req.body;
+  const { name, price, description, img, tags, category } = req.body;
+
   try{
     const product = await Product.findByPk(req.params.id);
     if (!product) {
       return res.status(404).json({ message: 'Product not found' });
     }
-    await product.update({name, price, description, img});
+    await product.update({name, price, description, img, category});
 
     if (tags) {
       const newProductTags = await Promise.all(tags.map(async (tag) => {

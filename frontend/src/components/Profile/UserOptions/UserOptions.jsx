@@ -1,3 +1,4 @@
+"use client"
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -15,12 +16,13 @@ import { BsHeartbreak } from 'react-icons/bs'
 import { GiHouseKeys } from 'react-icons/gi'
 
 
-export default function UserOptions({ userData }) {
-  const { actions } = useAppContext();
+export default function UserOptions() {
+  const { store, actions } = useAppContext();
   const [showModal, setShowModal] = useState(false);
   const [modalInfo, setModalInfo] = useState({});
   const {push} = useRouter();
 
+  const { userInfo } = store
   const { setLoggedIn, setUserInfo } = actions
 
   const updateModal = (data) => {
@@ -63,7 +65,7 @@ export default function UserOptions({ userData }) {
       }
     }
     if (input === 'delete'){
-      const resp = await deleteUser(userData.id);
+      const resp = await deleteUser(userInfo.id);
       if (resp){
         setLoggedIn(false);
         setUserInfo({});

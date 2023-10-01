@@ -1,16 +1,23 @@
-"use client"
-import {motion} from 'framer-motion';
+import { Suspense } from 'react';
 
-export default function Instrument() {
+import HeaderProduct from '@/components/Products/HeaderProduct/HeaderProduct';
+import Products from '@/components/Products/Products';
+import { getAllProducts } from '@/services/getProducts'
+
+
+export default async function InstrumentView() {
+  const products = await getAllProducts();
+
   return (
-    <motion.main 
-      className="flex min-h-screen flex-col items-center justify-center overflow-x-hidden"
-      initial={{ y: '-50%', opacity: 0 }}
-      animate={{ y: '0%', opacity: 1 }}
-      exit={{ opacity: 1 }}
-      transition={{ duration: 0.35, ease: 'easeInOut'}}
-      >
-      <h1 className='text-6xl font-bold'>Instrument</h1>
-    </motion.main>
+    <main className="flex min-h-screen flex-col items-center justify-center overflow-x-hidden">
+      <HeaderProduct
+        title='Instrument'
+        subtitle='Find and buy a tool for express yourself'
+      />
+
+      <Suspense fallback={<div>Loading...</div>}>
+        <Products products={products}/>
+      </Suspense>
+    </main>
   )
 }
