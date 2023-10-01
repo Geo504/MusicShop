@@ -37,7 +37,7 @@ export default function DetailView({id}) {
       <header className='self-start mt-14 px-4 flex items-center text-[#445058] text-sm'>
         <Link href={'/products'} className={style.btn_link}>Products</Link>
         <MdKeyboardArrowRight className='text-base' />
-        <span>Instruments</span>
+        <span>{product.category}</span>
         <MdKeyboardArrowRight className='text-base' />
         <span className='font-semibold text-[#000]'>{product.name}</span>
       </header>
