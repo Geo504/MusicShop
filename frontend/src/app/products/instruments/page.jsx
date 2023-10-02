@@ -2,11 +2,11 @@ import { Suspense } from 'react';
 
 import HeaderProduct from '@/components/Products/HeaderProduct/HeaderProduct';
 import Products from '@/components/Products/Products';
-import { getAllProducts } from '@/services/getProducts'
+import { getFilteredProducts } from '@/services/getProducts'
 
 
 export default async function InstrumentView() {
-  const products = await getAllProducts();
+  const products = await getFilteredProducts('Instruments');
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center overflow-x-hidden">

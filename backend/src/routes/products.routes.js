@@ -4,7 +4,8 @@ import { authRequired } from '../middlewares/validateToken.js';
 import { validateSchema } from '../middlewares/validateSchema.js';
 import { productSchema } from "../schemas/product.js";
 import { 
-  getProducts, 
+  getProducts,
+  getProductsInstruments,
   getProduct, 
   uploadImg, 
   createProduct, 
@@ -15,7 +16,8 @@ import {
 const router = Router();
 
 router.get('/products', getProducts)
-router.get('/products/:id', getProduct)
+router.get('/products/category/:filter', getProductsInstruments)
+router.get('/products/id/:id', getProduct)
 router.post('/products/uploadImage', authRequired, uploadImg)
 router.post('/products', authRequired, validateSchema(productSchema), createProduct)
 router.put('/products/:id', authRequired, updateProduct)

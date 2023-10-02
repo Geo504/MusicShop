@@ -32,17 +32,17 @@ export default function NavBar() {
       <ul className={style.li_container}>
         <LinkItem 
           title={'Products'} 
-          class_btn={`${path=='/products'?style.active:''}`}
+          class_btn={`${path=='/products' || path.includes('/concert')?style.active:''}`}
           routes={product} />
 
         <LinkItem 
           title={'Instruments'} 
-          class_btn={`${path=='/instruments'?style.active:''}`}
+          class_btn={`${path.includes('/instruments')?style.active:''}`}
           routes={instruments} />
 
         <LinkItem 
           title={'Others'} 
-          class_btn={`${path.includes('/others')?style.active:''}`}
+          class_btn={`${path.includes('/accesories')||path.includes('/clothes')||path.includes('/services')?style.active:''}`}
           routes={others} />
       </ul>
 

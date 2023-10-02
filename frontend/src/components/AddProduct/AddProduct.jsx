@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import addproduct from '../../../public/addproduct.png';
+import bg from '../../../public/bg_add_product.png';
 import AddForm from './AddForm/AddForm';
 
 import style from './AddProduct.module.css';
@@ -12,7 +12,7 @@ export default function AddProduct() {
     <>
     <div className={style.background}>
       <Image 
-        src={addproduct} 
+        src={bg} 
         alt=''
         height={'100%'}
         sizes='50vw'

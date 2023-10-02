@@ -2,23 +2,23 @@ import { Suspense } from 'react';
 
 import HeaderProduct from '@/components/Products/HeaderProduct/HeaderProduct';
 import Products from '@/components/Products/Products';
-import { getAllProducts } from '@/services/getProducts'
+import { getFilteredProducts } from '@/services/getProducts'
 
 
-export default async function AccesoriesView() {
-  const products = await getAllProducts();
+export default async function ConcertView() {
+  const products = await getFilteredProducts('Concert');
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center overflow-x-hidden">
-
       <HeaderProduct
-        title='Accesories'
-        subtitle='Find all your favorite accesories'
+        title='Concert Tickets'
+        subtitle='Build a memory with your friends and favorite artist'
       />
 
       <Suspense fallback={<div>Loading...</div>}>
         <Products products={products}/>
       </Suspense>
+
     </main>
   )
 }

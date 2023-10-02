@@ -23,7 +23,7 @@ export default async function DetailView({id}) {
           Products
         </Link>
         <MdKeyboardArrowRight className='text-base' />
-        <Link href={`/${product.category.toLowerCase()}`} className={style.btn_link}>
+        <Link href={`/products/${product.category.toLowerCase()}`} className={style.btn_link}>
           {product.category}
         </Link>
         <MdKeyboardArrowRight className='text-base' />

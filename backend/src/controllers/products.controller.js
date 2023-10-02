@@ -18,6 +18,21 @@ export const getProducts = async (req, res) => {
 }
 
 
+export const getProductsInstruments = async (req, res) => {
+  try{
+    const products = await Product.findAll({
+      where: {
+        category: req.params.filter
+      }
+    });
+    res.json(products);
+  }
+  catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+}
+
+
 export const getProduct = async (req, res) => {
   try{
     const product = await Product.findByPk(req.params.id,{

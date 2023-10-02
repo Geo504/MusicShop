@@ -48,12 +48,13 @@ export default function AddForm() {
       setLoadingImg(false);
       alert('Error uploading image');
       return;
-    };
-
-    setImageUrl(data.url);
-    register('img', { value: data.url });
-    imgInputRef.current.value = '';
-    setLoadingImg(false);
+    }
+    else{
+      setImageUrl(data.url);
+      register('img', { value: data.url });
+      imgInputRef.current.value = '';
+      setLoadingImg(false);
+    }
   }
   const deleteImage = () => {
     setImageUrl('');
@@ -171,7 +172,7 @@ export default function AddForm() {
                   <option value="Instruments">Instruments</option>
                   <option value="Accessories">Accessories</option>
                   <option value="Vinyl">Vinyl</option>
-                  <option value="Service">Service</option>
+                  <option value="Services">Services</option>
                   <option value="Clothes">Clothes</option>
                 </select>
                 {<span>{errors.category?.message}</span>}

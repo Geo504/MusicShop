@@ -3,7 +3,7 @@ import Image from 'next/image'
 import HeaderProfile from './HeaderProfile/HeaderProfile';
 import LinkItem from './LinkItem/LinkItem';
 import UserOptions from './UserOptions/UserOptions';
-import addproduct from '../../../public/addproduct.png';
+import bg from '../../../public/bg_profile.png';
 
 import style from './Profile.module.css'
 import { SiShopify } from 'react-icons/si'
@@ -19,7 +19,7 @@ export default function Profile() {
     <>
     <div className={style.background}>
       <Image 
-        src={addproduct} 
+        src={bg} 
         alt=''
         height={'100%'}
         sizes='50vw'
