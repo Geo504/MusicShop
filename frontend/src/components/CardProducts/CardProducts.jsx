@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import style from './CardProducts.module.css';
-import { AiOutlineHeart } from 'react-icons/ai';
-import { IoPricetagsOutline } from 'react-icons/io5';
 import AddCartBtn from './AddButton/AddCartBtn';
+import LikeButton from './LikeButton/LikeButton';
+
+import style from './CardProducts.module.css';
+import { IoPricetagsOutline } from 'react-icons/io5';
 
 export default function CardProducts({product, id}) {
   return (
@@ -20,7 +21,7 @@ export default function CardProducts({product, id}) {
         </div>
       </Link>
 
-      <AiOutlineHeart className='absolute top-2 right-2 text-2xl text-[#dfdfdfce]'/>
+      <LikeButton id={id}/>
       
       <div className='px-2 py-1 bg-[#ffffff9f] backdrop-blur'>
         <Link href={`/products/id/${id}`}>

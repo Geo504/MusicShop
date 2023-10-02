@@ -6,9 +6,9 @@ import { getOneProduct } from '@/services/getProducts'
 import CounterCart from './CounterCart/CounterCart';
 
 import style from './DetailView.module.css';
-import { AiOutlineHeart } from 'react-icons/ai';
 import { IoPricetagsOutline } from 'react-icons/io5';
 import { MdKeyboardArrowRight } from 'react-icons/md';
+import LikeButton from './LikeButton/LikeButton';
 
 
 export default async function DetailView({id}) {
@@ -32,7 +32,8 @@ export default async function DetailView({id}) {
 
       <section className={style.product_container}>
         <div className={style.img_container}>
-          <AiOutlineHeart className='absolute top-2 right-2 text-4xl text-[#dfdfdfce] z-10'/>
+          <LikeButton id={product.id}/>
+
           <Image 
             src={product.img} 
             alt=''

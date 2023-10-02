@@ -10,6 +10,7 @@ export const AppProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState({});
   const [cart, setCart] = useState([]);
+  const [likes, setLikes] = useState([]);
 
 
   useEffect(() => {
@@ -35,6 +36,17 @@ export const AppProvider = ({ children }) => {
   }, [userInfo])
 
 
+
+  const handleLikes = (id) => {
+    if (likes.includes(id)) {
+      setLikes(likes.filter(item => item !== id));
+    }
+    else{
+      setLikes([...likes, id]);
+    }
+  }
+
+
   const addProduct = (product) => {
     if (cart.some(item => item.id === product.id)) {
       setCart(cart.map(item => {
@@ -50,15 +62,17 @@ export const AppProvider = ({ children }) => {
 
   
 
+
   const store = useMemo(() => {
-    return { loggedIn, userInfo, cart }
-  }, [ loggedIn, userInfo, cart]);
+    return { loggedIn, userInfo, cart, likes }
+  }, [ loggedIn, userInfo, cart, likes]);
 
   const actions = {
     setLoggedIn,
     setUserInfo,
     addProduct,
-    deleteProduct
+    deleteProduct,
+    handleLikes
   }
 
   return(

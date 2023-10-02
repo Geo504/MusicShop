@@ -28,7 +28,7 @@ export const others = [
   {
     nameLink: 'Accesories',
     description: 'Find your favorite accesories',
-    link: '/products/accesories'
+    link: '/products/accessories'
   },
   {
     nameLink: 'Clothes',

@@ -42,7 +42,7 @@ export default function NavBar() {
 
         <LinkItem 
           title={'Others'} 
-          class_btn={`${path.includes('/accesories')||path.includes('/clothes')||path.includes('/services')?style.active:''}`}
+          class_btn={`${path.includes('/accessories')||path.includes('/clothes')||path.includes('/services')?style.active:''}`}
           routes={others} />
       </ul>
 
