@@ -33,6 +33,27 @@ export const getFilterProducts = async (req, res) => {
 }
 
 
+export const getUserProducts = async (req, res) => {
+  try{
+    const products = await Product.findAll({
+      where: {
+        user_id: req.user.id
+      },
+      // include: [{
+      //   model: User,
+      //   as: 'User',
+      //   attributes: []
+      // }]
+    });
+    // console.log(products);
+    res.json(products);
+  }
+  catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+}
+
+
 export const getProduct = async (req, res) => {
   try{
     const product = await Product.findByPk(req.params.id,{

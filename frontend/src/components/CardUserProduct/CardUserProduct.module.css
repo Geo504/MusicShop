@@ -1,0 +1,60 @@
+.card_container{
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  min-height: 24rem;
+  border-radius: 0.5rem;
+  transition: 0.4s;
+}
+.card_container:hover{
+  box-shadow: 0 0 1rem #445058;
+}
+
+
+.img_container{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+
+.btn_delete{
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.25rem;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  color: #ecacace2;
+  background-color: #2d07075d;
+
+  transition: 0.4s;
+}
+.btn_delete:hover{
+  color: #d70000;
+  background-color: #250000c1;
+  box-shadow: 0 0 0.8rem #9b1414;
+}
+
+
+.btn_edit{
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.1rem 0.9rem;
+  border: 2px solid transparent;
+  border-radius: 1rem;
+  color: white;
+  background-color: #39576b;
+  font-weight: 500;
+  transition: 0.4s;
+}
+.btn_edit:hover{
+  color: inherit;
+  border: 2px solid #39576b;
+  background-color: #cecece;
+  box-shadow: 0 0 0.8rem #445058;
+}
