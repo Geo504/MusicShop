@@ -2,6 +2,7 @@
   position: absolute;
   right: 0;
   max-height: 100%;
+  aspect-ratio: 1/1.1;
   overflow: hidden;
   z-index: -1;
 }

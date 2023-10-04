@@ -1,23 +1,26 @@
 import { Suspense } from 'react';
 
 import Products from '@/components/Products/Products';
-import { getAllProducts } from '@/services/getProducts';
+import { getFilteredProducts } from '@/services/getProducts'
 
 
-export default async function ProductsView() {
-  const products = await getAllProducts();
+export default async function ServicesView() {
+  const products = await getFilteredProducts('Services');
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center overflow-x-hidden">
 
       <header className='self-start px-4 mt-14'>
-        <h1 className='text-4xl font-bold'>All Products</h1>
-        <p className='text-[#445058]'>See and buy all the products in the store.</p>
+        <h1 className='text-4xl font-bold'>Services</h1>
+        <p className='text-[#445058]'>
+          Find lessons for learn music, hire a band for a special night or just rent an instrument for a day.
+        </p>
       </header>
 
       <Suspense fallback={<div>Loading...</div>}>
         <Products products={products}/>
       </Suspense>
+
     </main>
   )
 }

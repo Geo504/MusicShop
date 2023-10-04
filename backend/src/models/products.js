@@ -3,6 +3,7 @@ import {sequelize} from '../db/db.js';
 
 import { Tag } from './tags.js';
 
+
 export const Product = sequelize.define('products',{
   id: {
     type: DataTypes.INTEGER,

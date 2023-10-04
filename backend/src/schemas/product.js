@@ -14,3 +14,8 @@ export const productSchema = z.object({
     .refine((value) => value.length > 0, { message: 'Strings list is required' })
   ),
 })
+
+export const productLikeSchema = z.object({
+  productId: z
+  .number({required_error: 'productId is required'}),
+})

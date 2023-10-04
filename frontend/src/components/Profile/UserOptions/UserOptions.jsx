@@ -55,6 +55,7 @@ export default function UserOptions() {
     setShowModal(true);
   }
 
+  
   const modalFunction = async(input) => {
     if (input === 'logout'){
       const resp = await logout();

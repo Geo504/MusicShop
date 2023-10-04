@@ -1,6 +1,7 @@
 "use client"
 import { useState, useEffect } from 'react';
 
+import HeaderProduct  from './HeaderProduct/HeaderProduct';
 import CardProducts from '../CardProducts/CardProducts';
 import Pagination from '../Pagination/Pagination';
 
@@ -33,9 +34,17 @@ export default function Products({products}) {
   const lastIndex = currentPage * productPerPage;
   const firstIndex = lastIndex - productPerPage;
 
-
+  if (products.length === 0) {
+    return (
+      <h2 className='text-2xl font-bold text-[#445058] min-h-[30rem] flex items-center'>
+        Not products to show... Sorry!
+      </h2>
+    )
+  }
   return (
     <>
+    <HeaderProduct />
+    
     <main className='px-4 pt-2 pb-4 min-w-full'>
 
       <section className={style.product_container}>

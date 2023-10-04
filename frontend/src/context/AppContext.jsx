@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import Cookies from "js-cookie";
 
 import { verifyToken } from '../services/verifyToken.js';
+import { getLikes ,updateLikes } from '../services/userLikes.js';
 
 const AppContext = createContext();
 
@@ -10,19 +11,31 @@ export const AppProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState({});
   const [cart, setCart] = useState([]);
+  const [likes, setLikes] = useState([]);
 
+  async function getUserInfo(){
+    const response = await verifyToken()
+    if (response){
+      setUserInfo(response);
+      setLoggedIn(true);
+
+      const res = await getLikes()
+      if (res) {
+        return setLikes(res);
+      }
+    }
+  }
+  async function getUserLikes() {
+    const res = await getLikes()
+    if (res) {
+      return setLikes(res);
+    }
+  }
 
   useEffect(() => {
     const cookies = Cookies.get()
     if (cookies.token){
-      async function fetchUserData(){
-        const response = await verifyToken()
-        if (response){
-          setUserInfo(response);
-          setLoggedIn(true);
-        }
-      }
-      fetchUserData();
+      getUserInfo();
     }
   }, []);
 
@@ -30,9 +43,23 @@ export const AppProvider = ({ children }) => {
   useEffect(() => {
     if (Object.keys(userInfo).length > 0){
       setLoggedIn(true);
+      getUserLikes();
     }
-    return
+    else {
+      setLoggedIn(false);
+      setLikes([]);
+    }
   }, [userInfo])
+
+
+
+  const handleLikes = async(id) => {
+    const response = await updateLikes(id)
+
+    if (response) {
+      return setLikes(response);
+    }
+  }
 
 
   const addProduct = (product) => {
@@ -50,15 +77,17 @@ export const AppProvider = ({ children }) => {
 
   
 
+
   const store = useMemo(() => {
-    return { loggedIn, userInfo, cart }
-  }, [ loggedIn, userInfo, cart]);
+    return { loggedIn, userInfo, cart, likes }
+  }, [ loggedIn, userInfo, cart, likes]);
 
   const actions = {
     setLoggedIn,
     setUserInfo,
     addProduct,
-    deleteProduct
+    deleteProduct,
+    handleLikes
   }
 
   return(

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import HeaderProfile from './HeaderProfile/HeaderProfile';
 import LinkItem from './LinkItem/LinkItem';
 import UserOptions from './UserOptions/UserOptions';
-import addproduct from '../../../public/addproduct.png';
+import bg from '../../../public/bg_profile.png';
 
 import style from './Profile.module.css'
 import { SiShopify } from 'react-icons/si'
@@ -19,7 +19,7 @@ export default function Profile() {
     <>
     <div className={style.background}>
       <Image 
-        src={addproduct} 
+        src={bg} 
         alt=''
         height={'100%'}
         sizes='50vw'
@@ -35,14 +35,14 @@ export default function Profile() {
           title={'Add Product'} 
           subtitle={'Add a new product for sell'} 
           icon={<LuPackagePlus className='text-4xl text-[#445058]' />}
-          link={'/profile/add-product'}
+          link={'/profile/add_product'}
         />
 
         <LinkItem 
           title={'My Products'} 
           subtitle={'See your products in sell'} 
           icon={<LuBaggageClaim className='text-4xl text-[#445058]' />}
-          link={'/'}
+          link={'/profile/my_products'}
         />
 
         <LinkItem 
@@ -63,7 +63,7 @@ export default function Profile() {
           title={'My Favorites'} 
           subtitle={'See all your favorite products'} 
           icon={<BiSolidHeart className='text-4xl text-[#445058]'/>}
-          link={'/'}
+          link={'/profile/favorites'}
         />
         
         <LinkItem 

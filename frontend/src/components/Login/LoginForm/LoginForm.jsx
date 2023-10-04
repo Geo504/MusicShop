@@ -51,11 +51,12 @@ export default function LoginForm() {
     } else {
       const userData = await createUser(data);
       if (!userData) return;
-
-      reset();
-      setLoginMode(true);
-      alert('User created successfully!');
-      return;
+      else{
+        reset();
+        setLoginMode(true);
+        alert('User created successfully!');
+        return;
+      }
     }
   });
 
