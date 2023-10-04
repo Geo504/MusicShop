@@ -1,6 +1,5 @@
 import { Suspense } from 'react';
 
-import HeaderProduct from '@/components/Products/HeaderProduct/HeaderProduct';
 import Products from '@/components/Products/Products';
 import { getFilteredProducts } from '@/services/getProducts'
 
@@ -10,10 +9,13 @@ export default async function InstrumentView() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center overflow-x-hidden">
-      <HeaderProduct
-        title='Instrument'
-        subtitle='Find and buy a tool for express yourself'
-      />
+
+      <header className='self-start px-4 mt-14'>
+        <h1 className='text-4xl font-bold'>All Instrument</h1>
+        <p className='text-[#445058]'>
+          Find and buy a tool for express yourself.
+        </p>
+      </header>
 
       <Suspense fallback={<div>Loading...</div>}>
         <Products products={products}/>

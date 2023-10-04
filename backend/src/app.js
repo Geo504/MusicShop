@@ -7,6 +7,7 @@ import cors from 'cors';
 
 import usersRouter from './routes/users.routes.js';
 import productsRouter from './routes/products.routes.js';
+import userLikes from './routes/userLikes.routes.js';
 
 dotenv.config();
 
@@ -25,5 +26,6 @@ app.use(cors({
 
 app.use('/api', usersRouter);
 app.use('/api', productsRouter);
+app.use('/api', userLikes);
 
 export default app;

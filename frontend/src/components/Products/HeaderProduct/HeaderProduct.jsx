@@ -1,12 +1,9 @@
 import { FiFilter } from 'react-icons/fi';
 import { BiSortAlt2 } from 'react-icons/bi'
 
-export default function HeaderProduct({title, subtitle}) {
+export default function HeaderProduct() {
   return (
-    <header className='self-start px-4 mt-14'>
-      <h1 className='text-4xl font-bold'>{title}</h1>
-      <p className='text-[#445058]'>{subtitle}</p>
-      <div className='flex gap-4 mt-6'>
+      <div className='self-start px-4 flex gap-4 mt-6'>
         <button className='px-3 py-1 flex items-center text-gray-300 bg-gray-700 border-2 border-transparent rounded-md transition duration-[400ms] hover:text-gray-700 hover:border-gray-700 hover:bg-gray-300 hover:shadow-md'>
           <FiFilter />
           Filter
@@ -16,6 +13,5 @@ export default function HeaderProduct({title, subtitle}) {
           Sort
         </button>
       </div>
-    </header>
   )
 }

@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import Cookies from "js-cookie";
 
 import { verifyToken } from '../services/verifyToken.js';
+import { getLikes ,updateLikes } from '../services/userLikes.js';
 
 const AppContext = createContext();
 
@@ -12,18 +13,29 @@ export const AppProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [likes, setLikes] = useState([]);
 
+  async function getUserInfo(){
+    const response = await verifyToken()
+    if (response){
+      setUserInfo(response);
+      setLoggedIn(true);
+
+      const res = await getLikes()
+      if (res) {
+        return setLikes(res);
+      }
+    }
+  }
+  async function getUserLikes() {
+    const res = await getLikes()
+    if (res) {
+      return setLikes(res);
+    }
+  }
 
   useEffect(() => {
     const cookies = Cookies.get()
     if (cookies.token){
-      async function fetchUserData(){
-        const response = await verifyToken()
-        if (response){
-          setUserInfo(response);
-          setLoggedIn(true);
-        }
-      }
-      fetchUserData();
+      getUserInfo();
     }
   }, []);
 
@@ -31,18 +43,21 @@ export const AppProvider = ({ children }) => {
   useEffect(() => {
     if (Object.keys(userInfo).length > 0){
       setLoggedIn(true);
+      getUserLikes();
     }
-    return
+    else {
+      setLoggedIn(false);
+      setLikes([]);
+    }
   }, [userInfo])
 
 
 
-  const handleLikes = (id) => {
-    if (likes.includes(id)) {
-      setLikes(likes.filter(item => item !== id));
-    }
-    else{
-      setLikes([...likes, id]);
+  const handleLikes = async(id) => {
+    const response = await updateLikes(id)
+
+    if (response) {
+      return setLikes(response);
     }
   }
 

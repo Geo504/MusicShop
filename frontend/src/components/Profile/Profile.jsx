@@ -35,14 +35,14 @@ export default function Profile() {
           title={'Add Product'} 
           subtitle={'Add a new product for sell'} 
           icon={<LuPackagePlus className='text-4xl text-[#445058]' />}
-          link={'/profile/add-product'}
+          link={'/profile/add_product'}
         />
 
         <LinkItem 
           title={'My Products'} 
           subtitle={'See your products in sell'} 
           icon={<LuBaggageClaim className='text-4xl text-[#445058]' />}
-          link={'/'}
+          link={'/profile/my_products'}
         />
 
         <LinkItem 
@@ -63,7 +63,7 @@ export default function Profile() {
           title={'My Favorites'} 
           subtitle={'See all your favorite products'} 
           icon={<BiSolidHeart className='text-4xl text-[#445058]'/>}
-          link={'/'}
+          link={'/profile/favorites'}
         />
         
         <LinkItem 

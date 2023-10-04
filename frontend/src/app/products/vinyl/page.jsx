@@ -1,7 +1,6 @@
 import { Suspense } from 'react';
 
 import Products from '@/components/Products/Products';
-import HeaderProduct from '@/components/Products/HeaderProduct/HeaderProduct';
 import { getFilteredProducts } from '@/services/getProducts'
 
 
@@ -10,10 +9,13 @@ export default async function VinylView() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center overflow-x-hidden">
-      <HeaderProduct
-        title="Vynyl's"
-        subtitle='You like listening to classic vinyl? We got you covered.'
-      />
+      
+      <header className='self-start px-4 mt-14'>
+        <h1 className='text-4xl font-bold'>Vynyl's</h1>
+        <p className='text-[#445058]'>
+          You like listening to classic vinyl? We got you covered.
+        </p>
+      </header>
 
       <Suspense fallback={<div>Loading...</div>}>
         <Products products={products}/>

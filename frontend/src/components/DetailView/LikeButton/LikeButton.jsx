@@ -11,7 +11,7 @@ export default function LikeButton({id}) {
   const handleLikes = actions.handleLikes;
   const {likes, loggedIn} = store;
   
-  console.log(loggedIn);
+  
   useEffect(() => {
     if (likes.includes(id)) {
       setLike(true);

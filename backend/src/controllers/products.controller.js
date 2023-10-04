@@ -18,7 +18,7 @@ export const getProducts = async (req, res) => {
 }
 
 
-export const getProductsInstruments = async (req, res) => {
+export const getFilterProducts = async (req, res) => {
   try{
     const products = await Product.findAll({
       where: {
