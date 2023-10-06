@@ -32,8 +32,6 @@ export async function getFilteredProducts( category ) {
 export async function getUserProducts(cookies) {
   try{
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products/user`, {
-      method: 'GET',
-      credentials: 'include',
       headers: {
         'Cookie': cookies,
       },
@@ -84,6 +82,7 @@ export async function getUserProduct(id) {
     return null;
   }
 }
+
 
 
 export async function updateProduct(data) {

@@ -28,11 +28,13 @@ export default function AddForm() {
   const [tags, setTags] = useState([]);
   const [inputTag, setInputTag] = useState('');
   const imgInputRef = useRef(null);
-  const {push} = useRouter();
+  const {push, refresh} = useRouter();
+
 
   const {register, setValue, handleSubmit, formState: {errors}} = useForm({
     resolver: yupResolver(addProductSchema),
   });
+
 
   const addingImage = async(e) => {
     setLoadingImg(true);
@@ -73,7 +75,7 @@ export default function AddForm() {
 
   const onSubmit = handleSubmit( async(data) => {
     setLoadingSubmit(true);
-    data.tags = tags;
+    if (tags.length > 0) data.tags = tags;
 
     const response = await addProduct(data);
     if (!response) {
@@ -82,7 +84,8 @@ export default function AddForm() {
       return;
     }
     else{
-      push('/profile');
+      refresh();
+      push('/profile/my_products');
       alert('Added successfully');
     }
   });
@@ -103,7 +106,7 @@ export default function AddForm() {
               style={{objectFit: 'cover'}} />
 
             <label htmlFor="file" className='absolute top-2 left-2'>
-              <BiImageAdd className='text-4xl text-[#fff]'/>
+              <BiImageAdd className={style.add_icon}/>
             </label>
             <input
               type='file'

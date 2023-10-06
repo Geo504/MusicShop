@@ -1,6 +1,7 @@
 'use client'
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import Cookies from "js-cookie";
+import { useRouter } from 'next/navigation';
 
 import { verifyToken } from '../services/verifyToken.js';
 import { getLikes ,updateLikes } from '../services/userLikes.js';
@@ -12,6 +13,7 @@ export const AppProvider = ({ children }) => {
   const [userInfo, setUserInfo] = useState({});
   const [cart, setCart] = useState([]);
   const [likes, setLikes] = useState([]);
+  const {refresh} = useRouter();
 
   async function getUserInfo(){
     const response = await verifyToken()
@@ -57,6 +59,7 @@ export const AppProvider = ({ children }) => {
     const response = await updateLikes(id)
 
     if (response) {
+      refresh();
       return setLikes(response);
     }
   }

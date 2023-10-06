@@ -5,7 +5,7 @@ import style from './CardUserProduct.module.css'
 import { IoTrashBin, IoPricetagsOutline } from 'react-icons/io5';
 import { BsFillGearFill } from 'react-icons/bs';
 
-export default function CardUserProduct({product}) {
+export default function CardUserProduct({product, handleModal}) {
   return (
     <section className={style.card_container}>
       <Link className='absolute top-0 left-0 h-full w-full' href={`/products/id/${product.id}`}>
@@ -19,7 +19,7 @@ export default function CardUserProduct({product}) {
         </div>
       </Link>
 
-      <button className={style.btn_delete}>
+      <button className={style.btn_delete} onClick={()=> handleModal(product)}>
         <IoTrashBin />
       </button>
       

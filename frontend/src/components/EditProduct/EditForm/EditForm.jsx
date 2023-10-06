@@ -119,7 +119,7 @@ export default function EditForm({productid}) {
               style={{objectFit: 'cover'}} />
 
             <label htmlFor="file" className='absolute top-2 left-2'>
-              <BiImageAdd className='text-4xl text-[#fff]'/>
+              <BiImageAdd className={style.add_icon}/>
             </label>
             <input
               type='file'

@@ -213,6 +213,10 @@ export const deleteProduct = async (req, res) => {
       await t.rollback();
       return res.status(404).json({ message: 'Product not found' });
     }
+    if (req.user.id !== product.user_id) {
+      await t.rollback();
+      return res.status(403).json({ message: 'You are not authorized to access this product' });
+    }
     await product.removeTags(product.tags, { transaction: t });
     await product.destroy({ transaction: t });
 
