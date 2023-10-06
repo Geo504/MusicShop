@@ -7,11 +7,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import PuffLoader from "react-spinners/PuffLoader";
 import ScaleLoader from "react-spinners/ScaleLoader";
 
-import { addProductSchema } from '../../../schemas/addProductSchema';
-import { uploadImage } from '../../../services/uploadImage';
-import { addProduct } from '../../../services/addProduct';
+import { addProductSchema } from '@/schemas/addProductSchema';
+import { uploadImage } from '@/services/uploadImage';
+import { updateProduct } from '@/services/getProducts';
+import { getUserProduct } from '@/services/getProducts'
 
-import style from './AddForm.module.css';
+import style from './EditForm.module.css';
 import default_img from '../../../../public/default_img.png';
 import { BiImageAdd, BiPlusMedical } from 'react-icons/bi';
 import { BsTrash2 } from 'react-icons/bs';
@@ -21,7 +22,7 @@ import { TbIcons } from 'react-icons/tb';
 import { RxPencil2 } from 'react-icons/rx';
 import { PiTagSimpleLight } from 'react-icons/pi';
 
-export default function AddForm() {
+export default function EditForm({productid}) {
   const [loadingImg, setLoadingImg] = useState(false);
   const [loadingSubmit, setLoadingSubmit] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
@@ -30,9 +31,24 @@ export default function AddForm() {
   const imgInputRef = useRef(null);
   const {push} = useRouter();
 
+
   const {register, setValue, handleSubmit, formState: {errors}} = useForm({
+    defaultValues: async() => {
+      const product = await getUserProduct(productid);
+      if (!product) {
+        push('/profile/my_products');
+        alert('Product not found');
+        return;
+      }
+      const { category, description, img, name, price, id } = product;
+      setImageUrl(product.img);
+      setTags(product.tags.map(tag => tag.tag_name));
+
+      return { category, description, img, name, price, id };
+    },
     resolver: yupResolver(addProductSchema),
   });
+
 
   const addingImage = async(e) => {
     setLoadingImg(true);
@@ -75,15 +91,15 @@ export default function AddForm() {
     setLoadingSubmit(true);
     data.tags = tags;
 
-    const response = await addProduct(data);
+    const response = await updateProduct(data);
     if (!response) {
-      alert('Error adding product');
+      alert('Error updating the product');
       setLoadingSubmit(false);
       return;
     }
     else{
-      push('/profile');
-      alert('Added successfully');
+      push('/profile/my_products');
+      alert('Product updated successfully');
     }
   });
 
@@ -136,7 +152,7 @@ export default function AddForm() {
                 <input 
                   type="text"
                   id='name'
-                  placeholder='' 
+                  placeholder=''
                   {...register('name')} />
                 {<span>{errors.name?.message}</span>}
               </div>
@@ -150,7 +166,7 @@ export default function AddForm() {
                 <input 
                   type="text"
                   id='price'
-                  placeholder='' 
+                  placeholder=''
                   {...register('price')} />
                 {<span>{errors.price?.message}</span>}
               </div>
@@ -164,7 +180,7 @@ export default function AddForm() {
                 <select 
                   type="text"
                   id='category'
-                  placeholder='' 
+                  placeholder=''
                   {...register('category')}
                 >
                   <option value="">Choose a category...</option>
@@ -187,7 +203,7 @@ export default function AddForm() {
                 <textarea 
                   type="text" 
                   id='description'
-                  placeholder='' 
+                  placeholder=''
                   {...register('description')} />
                 {<span>{errors.description?.message}</span>}
               </div>
@@ -241,7 +257,7 @@ export default function AddForm() {
           <ScaleLoader color={"#0008"} size={15} className='mx-auto'/> 
         ):(
           <button className={style.btn_submit} type='submit'>
-            Add to Market
+            Edit my Product
           </button>
         )}
 

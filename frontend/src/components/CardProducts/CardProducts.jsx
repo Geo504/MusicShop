@@ -7,10 +7,10 @@ import LikeButton from './LikeButton/LikeButton';
 import style from './CardProducts.module.css';
 import { IoPricetagsOutline } from 'react-icons/io5';
 
-export default function CardProducts({product, id}) {
+export default function CardProducts({product}) {
   return (
     <section className={style.card_container}>
-      <Link className='absolute top-0 left-0 h-full w-full' href={`/products/id/${id}`}>
+      <Link className='absolute top-0 left-0 h-full w-full' href={`/products/id/${product.id}`}>
         <div className={style.img_container}>
           <Image 
             src={product.img} 
@@ -21,10 +21,10 @@ export default function CardProducts({product, id}) {
         </div>
       </Link>
 
-      <LikeButton id={id}/>
+      <LikeButton id={product.id}/>
       
       <div className='px-2 py-1 bg-[#ffffff9f] backdrop-blur'>
-        <Link href={`/products/id/${id}`}>
+        <Link href={`/products/id/${product.id}`}>
           <h5 className='font-semibold'>{product.name}</h5>
           <p className='text-[#000] leading-4 flex gap-1 items-center'>
             <IoPricetagsOutline />

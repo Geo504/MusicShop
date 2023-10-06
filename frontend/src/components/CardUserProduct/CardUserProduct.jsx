@@ -34,7 +34,7 @@ export default function CardUserProduct({product}) {
         </Link>
 
         <div className='flex justify-center mb-0.5'>
-          <Link href={`/profile`} className={style.btn_edit}>
+          <Link href={`/profile/edit_product/${product.id}`} className={style.btn_edit}>
             <BsFillGearFill className='text-lg' />
             Edit
           </Link>

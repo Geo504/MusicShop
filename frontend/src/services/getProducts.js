@@ -66,3 +66,42 @@ export async function getOneProduct(id) {
     console.log(error);
   }
 }
+
+
+export async function getUserProduct(id) {
+  try{
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products/user/${id}`, {
+      credentials: 'include',
+    });
+    if (response.status !== 200) {
+      return null;
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+  catch (error) {
+    console.log(error);
+    return null;
+  }
+}
+
+
+export async function updateProduct(data) {
+  try{
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products`, {
+      method: 'PUT',
+      body: JSON.stringify(data),
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+    });
+    if (response.status !== 200) {
+      return null;
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+  catch (error) {
+    console.log(error);
+    return null;
+  }
+}
