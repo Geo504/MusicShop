@@ -1,6 +1,5 @@
 import Image from 'next/image';
 
-import bg from '../../../public/bg_edit_product.png';
 import EditForm from './EditForm/EditForm';
 
 import style from './EditProduct.module.css';
@@ -11,12 +10,12 @@ export default function EditProduct({productId}) {
     <>
     <div className={style.background}>
       <Image 
-        src={bg} 
+        src={'https://i.ibb.co/ByTPMfY/bg-edit-product.png'} 
         alt=''
-        height={'100%'}
+        fill
         sizes='50vw'
         style={{objectFit: 'cover'}}
-       className='scale-[1.2]'/>
+        className='scale-[1.2] translate-x-40'/>
     </div>
 
     <EditForm productid={productId}/>

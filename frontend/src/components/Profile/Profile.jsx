@@ -3,7 +3,7 @@ import Image from 'next/image'
 import HeaderProfile from './HeaderProfile/HeaderProfile';
 import LinkItem from './LinkItem/LinkItem';
 import UserOptions from './UserOptions/UserOptions';
-import bg from '../../../public/bg_profile.png';
+// import bg from '../../../public/bg_profile.png';
 
 import style from './Profile.module.css'
 import { SiShopify } from 'react-icons/si'
@@ -19,12 +19,12 @@ export default function Profile() {
     <>
     <div className={style.background}>
       <Image 
-        src={bg} 
+        src={'https://i.ibb.co/7vskdBJ/bg-profile.png'} 
         alt=''
-        height={'100%'}
-        sizes='50vw'
-        style={{objectFit: 'contain'}}
-        className='' />
+        fill
+        sizes='40vw'
+        style={{objectFit: 'cover', objectPosition: 'top'}}	
+      />
     </div>
 
     <HeaderProfile/>

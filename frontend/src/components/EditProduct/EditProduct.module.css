@@ -1,8 +1,9 @@
 .background{
   position: absolute;
-  right: -13rem;
-  max-height: 100%;
-  max-width: 60rem;
+  right: 0;
+  height: 100%;
+  max-height: 1000px;
+  aspect-ratio: 1/1;
   overflow: hidden;
   z-index: -1;
 }
