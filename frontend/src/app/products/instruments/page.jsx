@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 
 import Products from '@/components/Products/Products';
 import { getFilteredProducts } from '@/services/getProducts'
+import ProductList from '@/components/Loading/ProductList';
 
 
 export default async function InstrumentView() {
@@ -17,7 +18,7 @@ export default async function InstrumentView() {
         </p>
       </header>
 
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={ <ProductList/> }>
         <Products products={products}/>
       </Suspense>
     </main>

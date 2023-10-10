@@ -3,7 +3,6 @@ import Image from 'next/image'
 import HeaderProfile from './HeaderProfile/HeaderProfile';
 import LinkItem from './LinkItem/LinkItem';
 import UserOptions from './UserOptions/UserOptions';
-// import bg from '../../../public/bg_profile.png';
 
 import style from './Profile.module.css'
 import { SiShopify } from 'react-icons/si'

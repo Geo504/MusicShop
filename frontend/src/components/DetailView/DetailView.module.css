@@ -21,8 +21,9 @@
   flex-grow: 1;
   aspect-ratio: 1/1;
   border-radius: 1rem;
-  width: 100%;
+  width: 50%;
   max-width: 40rem;
+  box-shadow: 0 0 0.8rem #445058;
 }
 .text_container{
   display: flex;
@@ -36,7 +37,10 @@
     align-items: center;
   }
   .text_container{
-    max-width: 100%;
+    width: 100%;
+  }
+  .img_container{
+    width: 100%;
   }
 }
 
