@@ -33,6 +33,21 @@ export const getFilterProducts = async (req, res) => {
 }
 
 
+export const getUserProducts = async (req, res) => {
+  try{
+    const products = await Product.findAll({
+      where: {
+        user_id: req.user.id
+      }
+    });
+    res.json(products);
+  }
+  catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+}
+
+
 export const getProduct = async (req, res) => {
   try{
     const product = await Product.findByPk(req.params.id,{
@@ -50,6 +65,31 @@ export const getProduct = async (req, res) => {
     });
     if (!product) {
       return res.status(404).json({ message: 'Product not found' });
+    }
+    res.json(product);
+  }
+  catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+}
+
+
+export const getUserProduct = async (req, res) => {
+  try{
+    const product = await Product.findByPk(req.params.productId,{
+      include: [
+        {
+          model:Tag,
+          attributes: ['tag_name'],
+          through: {attributes: []}
+        },
+      ]
+    });
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+    if (req.user.id !== product.user_id) {
+      return res.status(403).json({ message: 'You are not authorized to access this product' });
     }
     res.json(product);
   }
@@ -125,12 +165,15 @@ export const createProduct = async (req, res) => {
 
 
 export const updateProduct = async (req, res) => {
-  const { name, price, description, img, tags, category } = req.body;
+  const { name, price, description, img, tags, category, id } = req.body;
 
   try{
-    const product = await Product.findByPk(req.params.id);
+    const product = await Product.findByPk(id);
     if (!product) {
       return res.status(404).json({ message: 'Product not found' });
+    }
+    if (req.user.id !== product.user_id) {
+      return res.status(403).json({ message: 'You are not authorized to access this product' });
     }
     await product.update({name, price, description, img, category});
 
@@ -169,6 +212,10 @@ export const deleteProduct = async (req, res) => {
     if (!product) {
       await t.rollback();
       return res.status(404).json({ message: 'Product not found' });
+    }
+    if (req.user.id !== product.user_id) {
+      await t.rollback();
+      return res.status(403).json({ message: 'You are not authorized to access this product' });
     }
     await product.removeTags(product.tags, { transaction: t });
     await product.destroy({ transaction: t });

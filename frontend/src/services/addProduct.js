@@ -6,8 +6,12 @@ export async function addProduct(data) {
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
     });
-      const responseData = await response.json();
-      return responseData;
+    if (response.status !== 200) {
+      alert('Error while adding product');
+      return null;
+    }
+    const responseData = await response.json();
+    return responseData;
   }
   catch (error) {
     console.log(error);

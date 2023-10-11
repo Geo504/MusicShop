@@ -1,16 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import AddCartBtn from './AddButton/AddCartBtn';
-import LikeButton from './LikeButton/LikeButton';
+import style from './CardUserProduct.module.css'
+import { IoTrashBin, IoPricetagsOutline } from 'react-icons/io5';
+import { BsFillGearFill } from 'react-icons/bs';
 
-import style from './CardProducts.module.css';
-import { IoPricetagsOutline } from 'react-icons/io5';
-
-export default function CardProducts({product}) {
+export default function CardUserProduct({product, handleModal}) {
   return (
     <section className={style.card_container}>
-      <Link className='absolute top-0 left-0 h-full w-full' href={`/detail_view/${product.id}`}>
+      <Link className='absolute top-0 left-0 h-full w-full' href={`/products/id/${product.id}`}>
         <div className={style.img_container}>
           <Image 
             src={product.img} 
@@ -21,10 +19,12 @@ export default function CardProducts({product}) {
         </div>
       </Link>
 
-      <LikeButton id={product.id}/>
+      <button className={style.btn_delete} onClick={()=> handleModal(product)}>
+        <IoTrashBin />
+      </button>
       
       <div className='px-2 py-1 bg-[#ffffff9f] backdrop-blur'>
-        <Link href={`/detail_view/${product.id}`}>
+        <Link href={`/products/id/${product.id}`}>
           <h5 className='font-semibold'>{product.name}</h5>
           <p className='text-[#000] leading-4 flex gap-1 items-center'>
             <IoPricetagsOutline />
@@ -34,10 +34,10 @@ export default function CardProducts({product}) {
         </Link>
 
         <div className='flex justify-center mb-0.5'>
-          <AddCartBtn
-           classBtn={style.btn_add_cart}
-           text='Add to Cart'
-           product={product} />
+          <Link href={`/profile/edit_product/${product.id}`} className={style.btn_edit}>
+            <BsFillGearFill className='text-lg' />
+            Edit
+          </Link>
         </div>
       </div>
     </section>

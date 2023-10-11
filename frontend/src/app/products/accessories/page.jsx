@@ -1,7 +1,8 @@
 import { Suspense } from 'react';
 
 import Products from '@/components/Products/Products';
-import { getFilteredProducts } from '@/services/getProducts'
+import { getFilteredProducts } from '@/services/getProducts';
+import ProductList from '@/components/Loading/ProductList';
 
 
 export default async function AccesoriesView() {
@@ -15,7 +16,7 @@ export default async function AccesoriesView() {
         <p className='text-[#445058]'>Find all your favorite accesories. Headphones, microphones, speaker and more...</p>
       </header>
 
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={ <ProductList/> }>
         <Products products={products}/>
       </Suspense>
     </main>

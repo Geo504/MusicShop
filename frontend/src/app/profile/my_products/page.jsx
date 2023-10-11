@@ -2,14 +2,14 @@ import { Suspense } from 'react';
 import { cookies } from "next/headers";
 import Link from 'next/link';
 
-import Products from '@/components/Products/Products';
-import { getFavoriteProducts } from '@/services/userLikes.js';
+import UserProducts from '@/components/UserProducts/UserProducts';
+import { getUserProducts } from '@/services/getProducts';
 
 import { MdKeyboardArrowRight } from 'react-icons/md';
 
 
 export default async function MyProductsView() {
-  const products = await getFavoriteProducts(cookies().toString());
+  const products = await getUserProducts(cookies().toString());
 
   return (
     <>
@@ -30,7 +30,7 @@ export default async function MyProductsView() {
       </header>
 
       <Suspense fallback={<div>Loading my products...</div>}>
-        <Products products={products}/>
+        <UserProducts products={products}/>
       </Suspense>
 
     </main>

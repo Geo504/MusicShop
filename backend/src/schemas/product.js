@@ -11,7 +11,7 @@ export const productSchema = z.object({
   .string({required_error: 'Image is required'}),
   tags: z.optional(
     z.array(z.string())
-    .refine((value) => value.length > 0, { message: 'Strings list is required' })
+    .refine((value) => value.length !== 0, { message: 'Strings list is required' })
   ),
 })
 

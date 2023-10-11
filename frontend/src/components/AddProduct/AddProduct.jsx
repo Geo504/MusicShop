@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import bg from '../../../public/bg_add_product.png';
+// import bg from '../../../public/bg_add_product.png';
 import AddForm from './AddForm/AddForm';
 
 import style from './AddProduct.module.css';
@@ -11,12 +11,12 @@ export default function AddProduct() {
     <>
     <div className={style.background}>
       <Image 
-        src={bg} 
+        src={'https://i.ibb.co/10zC2cg/bg-add-product.png'} 
         alt=''
-        height={'100%'}
-        sizes='50vw'
-        style={{objectFit: 'contain'}}
-        className='' />
+        fill
+        sizes='40vw'
+        style={{objectFit: 'cover'}}
+      />
     </div>
 
     <AddForm />

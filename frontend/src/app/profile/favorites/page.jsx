@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import Products from '@/components/Products/Products';
 import { getFavoriteProducts } from '@/services/userLikes.js';
+import ProductList from '@/components/Loading/ProductList';
 
 import { MdKeyboardArrowRight } from 'react-icons/md';
 
@@ -29,7 +30,7 @@ export default async function FavoritesView() {
         <p className='text-[#445058]'>A list of your favorite products are here.</p>
       </header>
 
-      <Suspense fallback={<div>Loading favorite...</div>}>
+      <Suspense fallback={ <ProductList/> }>
         <Products products={products}/>
       </Suspense>
 

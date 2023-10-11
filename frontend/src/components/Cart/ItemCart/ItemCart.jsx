@@ -32,10 +32,10 @@ export default function ItemCart({product, hideCart}) {
 
   return (
     <>
-    <section className='flex rounded-lg overflow-hidden min-h-[4.6rem]'>
+    <section className='flex rounded-lg overflow-hidden min-h-[4.6rem] shadow-lg'>
 
         <div className={style.img_container}>
-          <Link href={`/products/id/${product.id}`} onClick={hideCart}>
+          <Link href={`/detail_view/${product.id}`} onClick={hideCart}>
             <Image 
               src={product.img} 
               alt=''
