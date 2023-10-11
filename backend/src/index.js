@@ -6,8 +6,11 @@ async function main() {
   try{
     await sequelize.sync({ alter: true });
 
-    app.listen(5000)
-    console.log('Server started on port', 5000);
+    const PORT = process.env.PORT || 5000
+
+    app.listen(PORT, () => {
+      console.log('Server started on port:', PORT);
+    });
   } 
   catch (error) {
     console.error('Unable to connect to the database:', error);

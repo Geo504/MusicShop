@@ -17,6 +17,8 @@ export default function ProductList() {
       <div className='bg-[#7c8a93da] rounded-lg w-full h-96'></div>
       <div className='bg-[#7c8a93da] rounded-lg w-full h-96'></div>
       <div className='bg-[#7c8a93da] rounded-lg w-full h-96'></div>
+      <div className='bg-[#7c8a93da] rounded-lg w-full h-96'></div>
+      <div className='bg-[#7c8a93da] rounded-lg w-full h-96'></div>
     </div>
 
     <div className='animate-pulse bg-[#7c8a93da] rounded-lg w-60 h-10 my-4'></div>
