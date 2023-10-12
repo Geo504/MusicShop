@@ -35,8 +35,9 @@ export const login = async (req, res) => {
         sameSite: 'none', 
         secure: true, 
         httpOnly: true,
-        domain: process.env.FRONTEND_URL,
-       });
+        path: '/',
+        domain: `.${process.env.FRONTEND_URL}`,
+      });
       res.json({
         id: user.id,
         username: user.username,
