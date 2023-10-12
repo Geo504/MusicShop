@@ -31,7 +31,11 @@ export const login = async (req, res) => {
         return res.status(401).json({ message: 'Invalid password' });
       }
       const token = await createAccessToken({ id: user.id });
-      res.cookie('token', token, { sameSite: 'none', secure: true });
+      res.cookie('token', token, { 
+        sameSite: 'none', 
+        secure: true, 
+        httpOnly: true,
+       });
       res.json({
         id: user.id,
         username: user.username,
