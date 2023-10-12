@@ -6,6 +6,10 @@ export async function getAuth(data) {
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
     });
+    if (response.status === 404) {
+      alert('User not found');
+      return null;
+    }
     if (response.status === 401) {
       alert('Invalid credentials');
       return null;
