@@ -35,7 +35,7 @@ export const login = async (req, res) => {
         sameSite: 'none', 
         secure: true, 
         httpOnly: true,
-        domain: '.https://music-shop-mu.vercel.app'
+        domain: process.env.FRONTEND_URL,
        });
       res.json({
         id: user.id,
