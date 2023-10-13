@@ -15,7 +15,7 @@ export async function getAuth(data) {
       return null;
     }
     else {
-      const cookie = response.headers;
+      const cookie = response.headers.getSetCookie();
       console.log(cookie);
       const responseData = await response.json();
       return responseData;
