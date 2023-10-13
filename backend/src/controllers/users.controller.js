@@ -33,8 +33,8 @@ export const login = async (req, res) => {
       const token = await createAccessToken({ id: user.id });
       res.cookie('token', token, { 
         sameSite: 'none', 
-        secure: false, 
-        // httpOnly: true,
+        secure: true, 
+        httpOnly: true,
         maxAge: 24 * 60 * 60 * 1000,
         path: '/',
         domain: `.${process.env.FRONTEND_DOMAIN}`,
