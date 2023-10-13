@@ -22,7 +22,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Access-Control-Allow-Origin',
-            value: process.env.FRONTEND_URL,
+            value: process.env.NEXT_PUBLIC_BACKEND_URL,
           },
           {
             key: 'Access-Control-Allow-Credentials',
