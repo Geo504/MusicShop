@@ -36,8 +36,8 @@ export const login = async (req, res) => {
         secure: true, 
         // httpOnly: true,
         maxAge: 24 * 60 * 60 * 1000,
-        // path: '/',
-        domain: `${process.env.FRONTEND_DOMAIN}`,
+        path: '/',
+        domain: `.${process.env.FRONTEND_DOMAIN}`,
       });
       res.json({
         id: user.id,
