@@ -3,7 +3,11 @@ export async function getAuth(data) {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/login`, {
       method: 'POST',
       body: JSON.stringify(data),
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 
+        'Content-Type': 'application/json',
+        // 'Access-Control-Allow-Credentials': true,
+        // Cookie: req.headers.cookie
+      },
       credentials: 'include',
     });
     if (response.status === 404) {
