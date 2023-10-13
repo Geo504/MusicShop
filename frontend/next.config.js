@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-import cors from 'cors';
+const cors = require('cors');
 
 const nextConfig = {
   images: {
