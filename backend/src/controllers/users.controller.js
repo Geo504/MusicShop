@@ -34,10 +34,10 @@ export const login = async (req, res) => {
       res.cookie('token', token, { 
         sameSite: 'none', 
         secure: true, 
-        httpOnly: true,
+        // httpOnly: true,
         maxAge: 24 * 60 * 60 * 1000,
         // path: '/',
-        domain: `${process.env.FRONTEND_URL}`,
+        // domain: `${process.env.FRONTEND_URL}`,
       });
       res.json({
         id: user.id,
