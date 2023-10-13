@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+import cors from 'cors';
+
 const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -12,7 +14,24 @@ const nextConfig = {
         hostname: 'res.cloudinary.com',
       }
     ]
-  }
+  },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: process.env.FRONTEND_URL,
+          },
+          {
+            key: 'Access-Control-Allow-Credentials',
+            value: 'true',
+          },
+        ],
+      },
+    ];
+  },
 }
 
-module.exports = nextConfig
+export default nextConfig
