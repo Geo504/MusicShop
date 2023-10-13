@@ -35,9 +35,9 @@ export const login = async (req, res) => {
         sameSite: 'none', 
         secure: true, 
         httpOnly: true,
-        maxAge: 24 * 60 * 60 * 1000,
+        // maxAge: 24 * 60 * 60 * 1000,
         // path: process.env.FRONTEND_URL,
-        domain: `.${process.env.FRONTEND_URL}`,
+        // domain: `.${process.env.FRONTEND_URL}`,
       });
       res.json({
         id: user.id,
