@@ -5,8 +5,6 @@ export async function getAuth(data) {
       body: JSON.stringify(data),
       headers: { 
         'Content-Type': 'application/json',
-        // 'Access-Control-Allow-Credentials': true,
-        // Cookie: req.headers.cookie
       },
       credentials: 'include',
     });
@@ -19,8 +17,8 @@ export async function getAuth(data) {
       return null;
     }
     else {
-      const cookie = response.headers.getSetCookie();
-      console.log(cookie);
+      // const cookie = response.headers.get('Set-Cookie');
+      // console.log(cookie);
       const responseData = await response.json();
       return responseData;
     }

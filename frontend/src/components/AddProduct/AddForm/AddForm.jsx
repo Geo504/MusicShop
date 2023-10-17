@@ -54,6 +54,7 @@ export default function AddForm() {
     else{
       setImageUrl(data.url);
       register('img', { value: data.url });
+      setValue('img', data.url);
       imgInputRef.current.value = '';
       setLoadingImg(false);
     }

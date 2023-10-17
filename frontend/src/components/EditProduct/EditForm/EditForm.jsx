@@ -68,6 +68,7 @@ export default function EditForm({productid}) {
     else{
       setImageUrl(data.url);
       register('img', { value: data.url });
+      setValue('img', data.url);
       imgInputRef.current.value = '';
       setLoadingImg(false);
     }

@@ -1,0 +1,14 @@
+.background{
+  position: absolute;
+  right: 0;
+  height: 100%;
+  max-height: 1000px;
+  aspect-ratio: 1/1.28;
+  overflow: hidden;
+  z-index: -1;
+}
+@media screen and (max-width: 850px){
+  .background{
+    display: none;
+  }
+}

@@ -69,7 +69,7 @@ export default function Profile() {
           title={'Contact Us'} 
           subtitle={'Tell us how we can help you'} 
           icon={<TfiHeadphoneAlt className='text-4xl text-[#445058]'/>}
-          link={'/'}
+          link={'/profile/contact_us'}
         />
 
         <UserOptions />
