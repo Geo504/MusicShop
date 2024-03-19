@@ -4,7 +4,7 @@ import {sequelize} from '../db/db.js';
 import { Tag } from './tags.js';
 
 
-export const Product = sequelize.define('products',{
+export const Product = sequelize.define('product',{
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -31,7 +31,7 @@ export const Product = sequelize.define('products',{
     trim: true
   },
   img: {
-    type: DataTypes.STRING(255),
+    type: DataTypes.STRING(200),
     allowNull: false,
     trim: true
   }

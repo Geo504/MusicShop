@@ -2,7 +2,7 @@ import { Op } from 'sequelize';
 import {sequelize} from '../db/db.js';
 import {v2 as cloudinary} from 'cloudinary';
 
-import { User } from "../models/users.js";
+import { User } from "../models/user.js";
 import { Product } from "../models/products.js";
 import { Tag } from '../models/tags.js';
 

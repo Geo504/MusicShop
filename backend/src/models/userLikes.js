@@ -2,14 +2,19 @@ import {DataTypes} from 'sequelize';
 import {sequelize} from '../db/db.js';
 
 import {Product} from './products.js';
-import {User} from './users.js';
+import {User} from './user.js';
 
 
 export const UserLikes = sequelize.define('userLikes', {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
   userId: {
     type: DataTypes.INTEGER,
     references: {
-      model: 'users',
+      model: 'user',
       key: 'id'
     },
     onDelete: 'CASCADE'
@@ -17,7 +22,7 @@ export const UserLikes = sequelize.define('userLikes', {
   productId: {
     type: DataTypes.INTEGER,
     references: {
-      model: 'products',
+      model: 'product',
       key: 'id'
     },
     onDelete: 'CASCADE'

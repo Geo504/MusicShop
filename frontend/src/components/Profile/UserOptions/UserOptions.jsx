@@ -66,7 +66,7 @@ export default function UserOptions() {
       }
     }
     if (input === 'delete'){
-      const resp = await deleteUser(userInfo.id);
+      const resp = await deleteUser();
       if (resp){
         setLoggedIn(false);
         setUserInfo({});

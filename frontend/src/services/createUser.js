@@ -1,6 +1,6 @@
 export async function createUser(data) {
   try{
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/register`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user`, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: { 'Content-Type': 'application/json' },
