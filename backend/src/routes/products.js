@@ -13,7 +13,7 @@ import {
   createProduct, 
   updateProduct, 
   deleteProduct 
-} from '../controllers/products.controller.js';
+} from '../controllers/products.js';
 
 const router = Router();
 

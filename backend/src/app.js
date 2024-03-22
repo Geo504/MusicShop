@@ -6,7 +6,7 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 
 import usersRouter from './routes/user.js';
-import productsRouter from './routes/products.routes.js';
+import productsRouter from './routes/products.js';
 import userLikes from './routes/userLikes.routes.js';
 
 dotenv.config();

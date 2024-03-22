@@ -12,9 +12,12 @@ export const addProductSchema = yup.object().shape({
   .min(3)
   .max(50),
   price: yup
-  .string()
+  .number()
+  .typeError('Price must be a number')
   .required('Price is required')
-  .matches(/^\d+\.\d{2}$/, 'Must be a number with 2 decimal.'),
+  .test('is-decimal', 'Number with 2 decimals max.', value =>
+    (value + "").match(/^\d+(\.\d{1,2})?$/)
+  ),
   category: yup
   .string()
   .required('Category is required'),
