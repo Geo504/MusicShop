@@ -1,7 +1,6 @@
 "use client"
 import { useState, useEffect } from 'react';
 
-// import { updateUserListProduct } from '@/services/getProducts';
 import HeaderProduct  from '../Products/HeaderProduct/HeaderProduct';
 import CardUserProduct from '../CardUserProduct/CardUserProduct';
 import Pagination from '../Pagination/Pagination';
@@ -45,8 +44,7 @@ export default function UserProducts({products}) {
   }
 
 
-
-  if (products.length === 0) {
+  if ( !products || products.length === 0) {
     return (
       <h2 className='text-2xl font-bold text-[#445058] min-h-[30rem] flex items-center'>
         Not products to show... Sorry!

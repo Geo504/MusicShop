@@ -9,7 +9,6 @@ export const productSchema = z.object({
   .refine(value => Number((value).toFixed(2)) === value, {
     message: 'Price must be a number with a max of 2 decimals',
   }),
-  // .string({required_error: 'Price is required'}),
   description: z
   .string({required_error: 'Description is required'}),
   img: z

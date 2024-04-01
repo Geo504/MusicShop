@@ -27,50 +27,54 @@ export default function DeleteModal({modalState ,modalFunction, modalInfo}) {
 
 
   return (
-    <section className={`${style.modal_bg} ${modalState?'':style.hide}`}>
-      <div className={style.modal}>
+    <>
+    { modalInfo && Object.keys(modalInfo).length > 0 && (
+      <section className={`${style.modal_bg} ${modalState?'':style.hide}`}>
+        <div className={style.modal}>
 
-      <button
-         className={style.close_btn} 
-         onClick={()=> modalFunction(false)}>
-          <AiOutlineCloseCircle />
-        </button>
+          <button
+            className={style.close_btn} 
+            onClick={()=> modalFunction(false)}>
+            <AiOutlineCloseCircle />
+          </button>
 
-        <h2 className='text-2xl font-bold mt-2'>
-          Delete Product
-        </h2>
+          <h2 className='text-2xl font-bold mt-2'>
+            Delete Product
+          </h2>
 
-        <IoSadOutline className='text-6xl text-[#445058]'/>
+          <IoSadOutline className='text-6xl text-[#445058]'/>
 
-        <div className='flex flex-col items-center justify-center text-center grow'>
-          <p className=''>
-            Are you sure you want to delete this product?
-          </p>
+          <div className='flex flex-col items-center justify-center text-center grow'>
+            <p className=''>
+              Are you sure you want to delete this product?
+            </p>
 
-          <div className={style.img_container}>
-            <Image 
-              src={modalInfo.img} 
-              alt=''
-              fill
-              sizes='30vw'
-              style={{objectFit: 'cover'}} />
+            <div className={style.img_container}>
+              <Image 
+                src={modalInfo.img} 
+                alt=''
+                fill
+                sizes='30vw'
+                style={{objectFit: 'cover'}} />
+            </div>
+
+            <h4 className='font-semibold'>{modalInfo.name}</h4>
           </div>
 
-          <h4 className='font-semibold'>{modalInfo.name}</h4>
-        </div>
+          <div className='flex min-w-full justify-between font-semibold text-[#445058]'>
+            <button className={style.btn_modal_cancel} onClick={() => modalFunction(false)}>
+              Cancel
+            </button>
+            <button 
+              className={style.btn_modal_ok} 
+              onClick={() => deleteProduct()}>
+              Confirm
+            </button>
+          </div>
 
-        <div className='flex min-w-full justify-between font-semibold text-[#445058]'>
-          <button className={style.btn_modal_cancel} onClick={() => modalFunction(false)}>
-            Cancel
-          </button>
-          <button 
-            className={style.btn_modal_ok} 
-            onClick={() => deleteProduct()}>
-            Confirm
-          </button>
         </div>
-
-      </div>
-    </section>
+      </section>
+    )}
+    </>
   )
 }

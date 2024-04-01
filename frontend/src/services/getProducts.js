@@ -15,7 +15,23 @@ export async function getAllProducts() {
 
 export async function getFilteredProducts( category ) {
   try{
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products/category/${category}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products?category=${category}`, {
+      next: {
+        revalidate: 0
+      }
+    })
+    const responseData = await response.json();
+    return responseData;
+  }
+  catch (error) {
+    console.log(error);
+  }
+}
+
+
+export async function getSearchProducts( search ) {
+  try{
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products?name=${search}`, {
       next: {
         revalidate: 0
       }
@@ -37,10 +53,15 @@ export async function getUserProducts(cookies) {
       },
       next: {
         revalidate: 0
-      }
+      },
     });
     const responseData = await response.json();
-    return responseData;
+    
+    if (response.ok) {
+      return responseData;
+    } else {
+      return null;
+    }
   }
   catch (error) {
     console.log(error);
@@ -51,7 +72,7 @@ export async function getUserProducts(cookies) {
 
 export async function getOneProduct(id) {
   try{
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products/id/${id}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products?id=${id}`, {
       next: {
         revalidate: 0
       }

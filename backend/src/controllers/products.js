@@ -1,4 +1,4 @@
-import { Op } from 'sequelize';
+import { Op, Sequelize } from 'sequelize';
 import {sequelize} from '../db/db.js';
 import {v2 as cloudinary} from 'cloudinary';
 
@@ -9,22 +9,68 @@ import { Tag } from '../models/tags.js';
 
 export const getProducts = async (req, res) => {
   try{
-    const products = await Product.findAll();
-    res.json(products);
-  }
-  catch (error) {
-    return res.status(500).json({ message: error.message });
-  }
-}
+    let whereClause = {};
 
+    if (req.query.id) {
+      whereClause.id = req.query.id;
+    }
 
-export const getFilterProducts = async (req, res) => {
-  try{
-    const products = await Product.findAll({
-      where: {
-        category: req.params.filter
+    const validCategories = ["Clothes", "Instruments", "Services", "Accessories", "Vinyl", "Concert"];
+    if (req.query.category) {
+      if (validCategories.includes(req.query.category)) {
+        whereClause.category = req.query.category;
+      } else {
+        return res.status(400).json({ message: 'Invalid category' });
       }
-    });
+    }
+
+    if (req.query.name) {
+      whereClause = {
+        ...whereClause,
+        [Op.and]: [
+          Sequelize.where(
+            Sequelize.fn('lower', Sequelize.col('name')),
+            {
+              [Op.like]: `%${req.query.name.toLowerCase()}%`
+            }
+          )
+        ]
+      };
+    }
+
+    let products;
+    if (req.query.id) {
+      products = await Product.findOne({
+        where: whereClause,
+        include: [
+          {
+            model: Tag,
+            attributes: ['tag_name'],
+            through: { attributes: [] }
+          },
+          {
+            model: User,
+            attributes: ['username']
+          },
+        ]
+      });
+    } else {
+      products = await Product.findAll({
+        where: whereClause,
+        include: [
+          {
+            model: Tag,
+            attributes: ['tag_name'],
+            through: { attributes: [] }
+          },
+          {
+            model: User,
+            attributes: ['username']
+          },
+        ]
+      });
+    }
+
     res.json(products);
   }
   catch (error) {
@@ -41,32 +87,6 @@ export const getUserProducts = async (req, res) => {
       }
     });
     res.json(products);
-  }
-  catch (error) {
-    return res.status(500).json({ message: error.message });
-  }
-}
-
-
-export const getProduct = async (req, res) => {
-  try{
-    const product = await Product.findByPk(req.params.id,{
-      include: [
-        {
-          model:Tag,
-          attributes: ['tag_name'],
-          through: {attributes: []}
-        },
-        {
-          model: User,
-          attributes: ['username']
-        },
-      ]
-    });
-    if (!product) {
-      return res.status(404).json({ message: 'Product not found' });
-    }
-    res.json(product);
   }
   catch (error) {
     return res.status(500).json({ message: error.message });
