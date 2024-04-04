@@ -10,7 +10,9 @@ import { MdKeyboardArrowRight } from 'react-icons/md';
 
 
 export default async function FavoritesView() {
-  const products = await getFavoriteProducts(cookies().toString());
+  const cookieString = cookies().toString();
+  const token = cookieString.split('=')[1];
+  const products = await getFavoriteProducts(token);
 
   return (
     <>

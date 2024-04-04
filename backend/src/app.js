@@ -19,10 +19,11 @@ app.use(fileUpload());
 app.use(cookieParser());
 
 
-
 app.use(cors({
   origin: process.env.FRONTEND_URL,
-  credentials: true
+  credentials: true,
+  exposedHeaders: ['Authorization'],
+  allowedHeaders: ['Authorization', 'Content-Type'],
 }));
 
 app.use('/api', usersRouter);

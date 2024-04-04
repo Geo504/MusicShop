@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import { useAppContext } from '@/context/AppContext';
-import { logout } from '@/services/logout';
 import { deleteUser } from '@/services/deleteUser';
 
 import style from './UserOptions.module.css';
@@ -22,8 +21,7 @@ export default function UserOptions() {
   const [modalInfo, setModalInfo] = useState({});
   const {push} = useRouter();
 
-  const { userInfo } = store
-  const { setLoggedIn, setUserInfo } = actions
+  const { setToken } = actions
 
   const updateModal = (data) => {
     if (data ==='logout'){
@@ -56,20 +54,15 @@ export default function UserOptions() {
   }
 
   
-  const modalFunction = async(input) => {
+  const modalFunction = async (input) => {
     if (input === 'logout'){
-      const resp = await logout();
-      if (resp){
-        setLoggedIn(false);
-        setUserInfo({});
-        push('/');
-      }
+      setToken('');
+      push('/');
     }
     if (input === 'delete'){
       const resp = await deleteUser();
       if (resp){
-        setLoggedIn(false);
-        setUserInfo({});
+        setToken('');
         alert('Account deleted successfully');
         push('/');
       }

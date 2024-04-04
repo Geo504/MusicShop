@@ -1,24 +1,24 @@
-export async function getAuth(data) {
+export async function getAuth(data, setToken) {
   try{
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/login`, {
+    const response = await fetch(`/api/login`, {
       method: 'POST',
       body: JSON.stringify(data),
-      headers: { 
-        'Content-Type': 'application/json',
-      },
-      credentials: 'include',
+      headers: {'Content-Type': 'application/json',},
+      // credentials: 'include',
     });
     if (response.status === 404) {
       alert('User not found');
       return null;
     }
     if (response.status === 401) {
-      alert('Invalid credentials');
+      alert('Invalid password');
       return null;
     }
     else {
-      // const cookie = response.headers.get('Set-Cookie');
-      // console.log(cookie);
+      const authHeader = response.headers.get('Authorization');
+      const token = authHeader && authHeader.split(' ')[1];
+      setToken(token);
+
       const responseData = await response.json();
       return responseData;
     }

@@ -7,6 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import PuffLoader from "react-spinners/PuffLoader";
 import ScaleLoader from "react-spinners/ScaleLoader";
 
+import { useAppContext } from '@/context/AppContext';
 import { addProductSchema } from '@/schemas/addProductSchema';
 import { uploadImage } from '@/services/uploadImage';
 import { updateProduct } from '@/services/getProducts';
@@ -22,7 +23,8 @@ import { TbIcons } from 'react-icons/tb';
 import { RxPencil2 } from 'react-icons/rx';
 import { PiTagSimpleLight } from 'react-icons/pi';
 
-export default function EditForm({productid}) {
+export default function EditForm({productId}) {
+  const {store} = useAppContext();
   const [loadingImg, setLoadingImg] = useState(false);
   const [loadingSubmit, setLoadingSubmit] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
@@ -31,10 +33,12 @@ export default function EditForm({productid}) {
   const imgInputRef = useRef(null);
   const {push} = useRouter();
 
+  const token = store.token;
+
 
   const {register, setValue, handleSubmit, formState: {errors}} = useForm({
     defaultValues: async() => {
-      const product = await getUserProduct(productid);
+      const product = await getUserProduct(productId, token);
       if (!product) {
         push('/profile/my_products');
         alert('Product not found');
@@ -92,7 +96,7 @@ export default function EditForm({productid}) {
     setLoadingSubmit(true);
     data.tags = tags;
 
-    const response = await updateProduct(data);
+    const response = await updateProduct(data, token);
     if (!response) {
       alert('Error updating the product');
       setLoadingSubmit(false);

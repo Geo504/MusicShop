@@ -7,8 +7,14 @@ export async function createUser(data) {
       credentials: 'include',
     });
 
+    if (!response.ok) {
+      throw new Error('Error creating user');
+    }
+
     const responseData = await response.json();
-    return responseData;
+    if (responseData){
+      return true;
+    }
   }
   catch (error) {
     console.log(error);

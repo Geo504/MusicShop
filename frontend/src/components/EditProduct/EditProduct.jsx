@@ -18,7 +18,7 @@ export default function EditProduct({productId}) {
         className='scale-[1.2] translate-x-40'/>
     </div>
 
-    <EditForm productid={productId}/>
+    <EditForm productId={productId}/>
     </>
   )
 }

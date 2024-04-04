@@ -1,8 +1,12 @@
-export async function verifyToken() {
+export async function getUser(token) {
   try{
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/verify`, {
+    const response = await fetch(`/api/user`, {
       method: 'GET',
-      credentials: 'include',
+      headers: {
+        'Authorization': 'Bearer ' + token,
+        'Content-Type': 'application/json',
+      },
+      // credentials: 'include',
     });
     if (response.status === 401) {
       return null;

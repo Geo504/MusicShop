@@ -1,10 +1,13 @@
-export async function addProduct(data) {
+export async function addProduct(data, token) {
   try{
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products`, {
       method: 'POST',
       body: JSON.stringify(data),
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
+      headers: {
+        'Authorization': 'Bearer ' + token,
+        'Content-Type': 'application/json'
+      },
+      // credentials: 'include',
     });
     if (response.status !== 200) {
       alert('Error while adding product');

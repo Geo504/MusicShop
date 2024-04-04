@@ -26,7 +26,9 @@ export default function LoginForm() {
   const {actions} = useAppContext();
   const [loginMode, setLoginMode] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
+  
   const setUserInfo = actions.setUserInfo;
+  const setToken = actions.setToken;
   const {push} = useRouter();
 
   const {register, handleSubmit, reset, formState: {errors}} = useForm({
@@ -40,7 +42,7 @@ export default function LoginForm() {
 
   const onSubmit = handleSubmit( async(data) => {
     if (loginMode){
-      const userData = await getAuth(data);
+      const userData = await getAuth(data, setToken);
       if (!userData) return;
       else{
         setUserInfo(userData);
@@ -50,7 +52,10 @@ export default function LoginForm() {
       }
     } else {
       const userData = await createUser(data);
-      if (!userData) return;
+      if (!userData) {
+        alert('Error creating user');
+        return;
+      }
       else{
         reset();
         setLoginMode(true);

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
+import { useAppContext } from '@/context/AppContext';
 import {deleteUserProduct} from '@/services/deleteProduct.js';
 
 import style from './DeleteModal.module.css';
@@ -9,11 +10,14 @@ import { IoSadOutline } from 'react-icons/io5'
 
 
 export default function DeleteModal({modalState ,modalFunction, modalInfo}) {
+  const {store} = useAppContext();
   const {refresh} = useRouter();
+
+  const token = store.token;
 
 
   const deleteProduct = async () => {
-    const response = await deleteUserProduct(modalInfo.id);
+    const response = await deleteUserProduct(modalInfo.id, token);
     if (!response){
       alert('Something went wrong, please refresh the page');
       modalFunction(false);

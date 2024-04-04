@@ -7,6 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import PuffLoader from "react-spinners/PuffLoader";
 import ScaleLoader from "react-spinners/ScaleLoader";
 
+import { useAppContext } from '@/context/AppContext';
 import { addProductSchema } from '../../../schemas/addProductSchema';
 import { uploadImage } from '../../../services/uploadImage';
 import { addProduct } from '../../../services/addProduct';
@@ -22,6 +23,7 @@ import { RxPencil2 } from 'react-icons/rx';
 import { PiTagSimpleLight } from 'react-icons/pi';
 
 export default function AddForm() {
+  const {store} = useAppContext();
   const [loadingImg, setLoadingImg] = useState(false);
   const [loadingSubmit, setLoadingSubmit] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
@@ -29,6 +31,8 @@ export default function AddForm() {
   const [inputTag, setInputTag] = useState('');
   const imgInputRef = useRef(null);
   const {push, refresh} = useRouter();
+
+  const token = store.token;
 
 
   const {register, setValue, handleSubmit, formState: {errors}} = useForm({
@@ -43,7 +47,7 @@ export default function AddForm() {
     const formData = new FormData();
     formData.append('file', e.target.files[0]);
 
-    const data = await uploadImage(formData);
+    const data = await uploadImage(formData, token);
     
     if (!data) {
       imgInputRef.current.value = '';
@@ -78,7 +82,7 @@ export default function AddForm() {
     setLoadingSubmit(true);
     if (tags.length > 0) data.tags = tags;
 
-    const response = await addProduct(data);
+    const response = await addProduct(data, token);
     if (!response) {
       alert('Error adding product');
       setLoadingSubmit(false);

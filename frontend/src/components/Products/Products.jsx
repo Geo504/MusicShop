@@ -34,7 +34,7 @@ export default function Products({products}) {
   const lastIndex = currentPage * productPerPage;
   const firstIndex = lastIndex - productPerPage;
 
-  if (products.length === 0) {
+  if ( products === undefined || products.length === 0) {
     return (
       <h2 className='text-2xl font-bold text-[#445058] min-h-[30rem] flex items-center'>
         Not products to show... Sorry!

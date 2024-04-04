@@ -1,11 +1,14 @@
 // import { cookies } from "next/headers";
 
-export async function updateLikes(id) {
+export async function updateLikes(id, token) {
   try{
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/userLikes`, {
       method: 'POST',
       body: JSON.stringify({productId: id}),
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Authorization': 'Bearer ' + token,
+        'Content-Type': 'application/json'
+      },
       credentials: 'include',
     });
       const responseData = await response.json();
@@ -18,13 +21,15 @@ export async function updateLikes(id) {
   }
 }
 
-export async function getLikes() {
+export async function getLikes(token) {
   try{
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/userLikes`, {
       method: 'GET',
-      credentials: 'include',
+      headers: {'Authorization': 'Bearer ' + token},
+      // credentials: 'include',
     });
     const responseData = await response.json();
+    console.log(responseData);
     return responseData;
   }
   catch (error) {
@@ -35,13 +40,13 @@ export async function getLikes() {
 }
 
 
-export async function getFavoriteProducts(cookies) {
+export async function getFavoriteProducts(token) {
   try{
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/userLikes/products`, {
       method: 'GET',
       credentials: 'include',
       headers: {
-        'Cookie': cookies,
+        'Authorization': 'Bearer ' + token
       },
       next: {
         revalidate: 0

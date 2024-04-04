@@ -8,8 +8,11 @@ import { getUserProducts } from '@/services/getProducts';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 
 
+
 export default async function MyProductsView() {
-  const products = await getUserProducts(cookies().toString());
+  const cookieString = cookies().toString();
+  const token = cookieString.split('=')[1];
+  const products = await getUserProducts(token);
 
   return (
     <>

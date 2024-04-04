@@ -3,63 +3,70 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import Cookies from "js-cookie";
 import { useRouter } from 'next/navigation';
 
-import { verifyToken } from '../services/verifyToken.js';
+import { getUser } from '../services/getUser.js';
 import { getLikes ,updateLikes } from '../services/userLikes.js';
 
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [token, setToken] = useState('');
   const [userInfo, setUserInfo] = useState({});
-  const [cart, setCart] = useState([]);
   const [likes, setLikes] = useState([]);
+
+  const [cart, setCart] = useState([]);
   const {refresh} = useRouter();
 
-  async function getUserInfo(){
-    const response = await verifyToken()
+  
+  async function getUserInfo(token){
+    const response = await getUser(token)
     if (response){
       setUserInfo(response);
       setLoggedIn(true);
 
-      const res = await getLikes()
+      const res = await getLikes(token)
       if (res) {
         return setLikes(res);
       }
     }
   }
-  async function getUserLikes() {
-    const res = await getLikes()
-    if (res) {
-      return setLikes(res);
-    }
-  }
+
+  // async function getUserLikes() {
+  //   const res = await getLikes()
+  //   if (res) {
+  //     return setLikes(res);
+  //   }
+  // }
+
+
 
   useEffect(() => {
     const cookies = Cookies.get()
     if (cookies.token){
-      getUserInfo();
+      getUserInfo(cookies.token);
+      setToken(cookies.token);
     }
   }, []);
 
 
   useEffect(() => {
-    if (Object.keys(userInfo).length > 0){
+    if (token!==''){
       setLoggedIn(true);
-      getUserLikes();
+      Cookies.set('token', token);
     }
     else {
       setLoggedIn(false);
+      setUserInfo({});
       setLikes([]);
+      Cookies.remove('token');
     }
-  }, [userInfo])
+  }, [token])
 
 
 
   const handleLikes = async(id) => {
-    const response = await updateLikes(id)
-
+    const response = await updateLikes(id, token)
     if (response) {
-      refresh();
       return setLikes(response);
     }
   }
@@ -82,10 +89,11 @@ export const AppProvider = ({ children }) => {
 
 
   const store = useMemo(() => {
-    return { loggedIn, userInfo, cart, likes }
+    return { token, loggedIn, userInfo, cart, likes }
   }, [ loggedIn, userInfo, cart, likes]);
 
   const actions = {
+    setToken,
     setLoggedIn,
     setUserInfo,
     addProduct,

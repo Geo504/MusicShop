@@ -7,6 +7,7 @@ import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 export default function LikeButton({id}) {
   const [like, setLike] = useState(false);
   const {store, actions} = useAppContext();
+
   const handleLikes = actions.handleLikes;
   const {likes, loggedIn} = store;
 

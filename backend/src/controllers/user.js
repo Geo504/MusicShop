@@ -28,32 +28,12 @@ export const createUser = async (req, res) => {
       password: passwordHash,
     })
 
-    const token = await createAccessToken({ id: newUser.id });
-    res.cookie('token', token, { sameSite: 'none', secure: true });
-    res.json({
-      id: newUser.id,
-      username: newUser.username,
-      email: newUser.email,
-    });
+    res.json({message: 'User created successfully'});
   }
   catch (error) {
     return res.status(500).json({ message: error.message });
   }
 }
-
-
-// export const getUsers = async (req, res) => {
-//   try{
-//     const users = await User.findAll({
-//       attributes: ['id', 'username', 'email']
-//     });
-//     res.json(users);
-//   }
-//   catch (error) {
-//     return res.status(500).json({ message: error.message });
-//   }
-// }
-
 
 
 export const getUser = async (req, res) => {
@@ -145,14 +125,7 @@ export const login = async (req, res) => {
         return res.status(401).json({ message: 'Invalid password' });
       }
       const token = await createAccessToken({ id: user.id });
-      res.cookie('token', token, { 
-        sameSite: 'none', 
-        secure: true, 
-        // httpOnly: true,
-        maxAge: 24 * 60 * 60 * 1000,
-        // path: '/',
-        domain: `${process.env.FRONTEND_DOMAIN}`,
-      });
+      res.set('Authorization', 'Bearer ' + token);
       res.json({
         id: user.id,
         username: user.username,
@@ -166,34 +139,28 @@ export const login = async (req, res) => {
 }
 
 
-export const logout = (req, res) => {
-  res.clearCookie('token');
-  res.sendStatus(204);
-}
-
-
-export const verifyToken = (req, res) => {
-  const token = req.cookies.token;
-  if (!token) {
-    return res.status(401).json({ message: 'Unauthorized' });
-  }
-  try{
-    jwt.verify(token, process.env.JWT_SECRET, async(err, decoded) => {
-      if (err) {
-        return res.status(401).json({ message: 'Invalid token' });
-      }
-      const user = await User.findByPk(decoded.id);
-      if (!user) {
-        return res.status(404).json({ message: 'User not found' });
-      }
-      res.json({
-        id: user.id,
-        username: user.username,
-        email: user.email,
-      });
-    })
-  }
-  catch (error) {
-    return res.status(500).json({ message: error.message });
-  }
-}
+// export const verifyToken = (req, res) => {
+//   const token = req.cookies.token;
+//   if (!token) {
+//     return res.status(401).json({ message: 'Unauthorized' });
+//   }
+//   try{
+//     jwt.verify(token, process.env.JWT_SECRET, async(err, decoded) => {
+//       if (err) {
+//         return res.status(401).json({ message: 'Invalid token' });
+//       }
+//       const user = await User.findByPk(decoded.id);
+//       if (!user) {
+//         return res.status(404).json({ message: 'User not found' });
+//       }
+//       res.json({
+//         id: user.id,
+//         username: user.username,
+//         email: user.email,
+//       });
+//     })
+//   }
+//   catch (error) {
+//     return res.status(500).json({ message: error.message });
+//   }
+// }

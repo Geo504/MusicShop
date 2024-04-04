@@ -45,11 +45,11 @@ export async function getSearchProducts( search ) {
 }
 
 
-export async function getUserProducts(cookies) {
+export async function getUserProducts(token) {
   try{
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products/user`, {
       headers: {
-        'Cookie': cookies,
+        'Authorization': 'Bearer ' + token,
       },
       next: {
         revalidate: 0
@@ -87,9 +87,12 @@ export async function getOneProduct(id) {
 }
 
 
-export async function getUserProduct(id) {
+export async function getUserProduct(id, token) {
   try{
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products/user/${id}`, {
+      headers: {
+        'Authorization': 'Bearer ' + token,
+      },
       credentials: 'include',
     });
     if (response.status !== 200) {
@@ -106,12 +109,15 @@ export async function getUserProduct(id) {
 
 
 
-export async function updateProduct(data) {
+export async function updateProduct(data, token) {
   try{
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products`, {
       method: 'PUT',
       body: JSON.stringify(data),
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Authorization': 'Bearer ' + token,
+        'Content-Type': 'application/json'
+      },
       credentials: 'include',
     });
     if (response.status !== 200) {
