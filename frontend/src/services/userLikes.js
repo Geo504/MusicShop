@@ -44,13 +44,13 @@ export async function getFavoriteProducts(token) {
   try{
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/userLikes/products`, {
       method: 'GET',
-      credentials: 'include',
       headers: {
         'Authorization': 'Bearer ' + token
       },
       next: {
         revalidate: 0
-      }
+      },
+      // credentials: 'include',
     });
     const responseData = await response.json();
     return responseData;
