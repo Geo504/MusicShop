@@ -49,16 +49,24 @@ export const AppProvider = ({ children }) => {
 
 
   useEffect(() => {
-    if (token!==''){
-      setLoggedIn(true);
-      Cookies.set('token', token);
-    }
-    else {
-      setLoggedIn(false);
-      setUserInfo({});
-      setLikes([]);
-      Cookies.remove('token');
-    }
+    const fetchData = async () => {
+      if (token !== '') {
+        setLoggedIn(true);
+        Cookies.set('token', token);
+
+        const res = await getLikes(token);
+        if (res) {
+          setLikes(res);
+        }
+      } else {
+        setLoggedIn(false);
+        setUserInfo({});
+        setLikes([]);
+        Cookies.remove('token');
+      }
+    };
+  
+    fetchData();
   }, [token])
 
 
