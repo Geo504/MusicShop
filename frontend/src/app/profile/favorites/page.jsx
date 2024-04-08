@@ -1,18 +1,17 @@
-import { Suspense } from 'react';
+// import { Suspense } from 'react';
 import { cookies } from "next/headers";
 import Link from 'next/link';
 
 import Products from '@/components/Products/Products';
 import { getFavoriteProducts } from '@/services/userLikes.js';
-import ProductList from '@/components/Loading/ProductList';
+// import ProductList from '@/components/Loading/ProductList';
 
 import { MdKeyboardArrowRight } from 'react-icons/md';
 
 
 export default async function FavoritesView() {
-  const cookieString = cookies().toString();
-  const token = cookieString.split('=')[1];
-  const products = await getFavoriteProducts(token);
+  const token = cookies().get('token');
+  const products = await getFavoriteProducts(token.value);
 
   return (
     <>
@@ -32,9 +31,9 @@ export default async function FavoritesView() {
         <p className='text-[#445058]'>A list of your favorite products are here.</p>
       </header>
 
-      <Suspense fallback={ <ProductList/> }>
+      {/* <Suspense fallback={ <ProductList/> }> */}
         <Products products={products}/>
-      </Suspense>
+      {/* </Suspense> */}
 
     </main>
     </>

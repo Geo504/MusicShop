@@ -1,18 +1,18 @@
-import { Suspense } from 'react';
+// import { Suspense } from 'react';
 import { cookies } from "next/headers";
 import Link from 'next/link';
 
 import UserProducts from '@/components/UserProducts/UserProducts';
 import { getUserProducts } from '@/services/getProducts';
+// import ProductList from '@/components/Loading/ProductList';
 
 import { MdKeyboardArrowRight } from 'react-icons/md';
 
 
 
 export default async function MyProductsView() {
-  const cookieString = cookies().toString();
-  const token = cookieString.split('=')[1];
-  const products = await getUserProducts(token);
+  const token = cookies().get('token');
+  const products = await getUserProducts(token.value);
 
   return (
     <>
@@ -32,9 +32,9 @@ export default async function MyProductsView() {
         <p className='text-[#445058]'>A list of your products for sell in the shop.</p>
       </header>
 
-      <Suspense fallback={<div>Loading my products...</div>}>
+      {/* <Suspense fallback={ <ProductList/> }> */}
         <UserProducts products={products}/>
-      </Suspense>
+      {/* </Suspense> */}
 
     </main>
     </>

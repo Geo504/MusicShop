@@ -15,7 +15,6 @@ export const AppProvider = ({ children }) => {
   const [likes, setLikes] = useState([]);
 
   const [cart, setCart] = useState([]);
-  const {refresh} = useRouter();
 
   
   async function getUserInfo(token){
