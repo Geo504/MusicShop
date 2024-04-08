@@ -13,12 +13,7 @@ export default function LikeButton({id}) {
 
 
   useEffect(() => {
-    if (likes.includes(id)) {
-      setLike(true);
-    }
-    else{
-      setLike(false);
-    }
+    setLike(likes.includes(id));
   },[likes]);
 
 
@@ -27,7 +22,7 @@ export default function LikeButton({id}) {
   };
   return (
     <button 
-      className='absolute top-2 right-2 p-1 text-2xl text-[#dfdfdfce] rounded-3xl bg-[#44505838] origin-center hover:rotate-[360deg] transition duration-500 ease-in-out'
+      className='absolute top-2 right-2 p-1 text-2xl text-[#dfdfdfce] rounded-3xl bg-[#44505838] origin-center hover:scale-[1.25] transition duration-500 ease-in-out'
       onClick={() => handleLikes(id)}>
       {like?<AiFillHeart />:<AiOutlineHeart />}
     </button>
