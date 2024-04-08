@@ -17,7 +17,7 @@ export default function Home() {
 
         <div className='flex gap-5 items-center justify-center'>
           <Link href={'/products'} className={style.btn_buy}>Buy Now</Link>
-          <button className={style.btn_sell}>Sell Now</button>
+          <Link href={'/profile/add_product'} className={style.btn_sell}>Sell Now</Link>
         </div>
       </div>
 
