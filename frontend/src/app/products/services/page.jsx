@@ -19,7 +19,7 @@ export default async function ServicesView() {
       </header>
 
       <Suspense fallback={ <ProductList/> }>
-        <Products products={products}/>
+        <Products productsServer={products}/>
       </Suspense>
 
     </main>

@@ -33,7 +33,7 @@ export default async function MyProductsView() {
       </header>
 
       {/* <Suspense fallback={ <ProductList/> }> */}
-        <UserProducts products={products}/>
+        <UserProducts productsServer={products}/>
       {/* </Suspense> */}
 
     </main>

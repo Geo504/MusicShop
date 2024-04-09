@@ -32,7 +32,7 @@ export default async function FavoritesView() {
       </header>
 
       {/* <Suspense fallback={ <ProductList/> }> */}
-        <Products products={products}/>
+        <Products productsServer={products}/>
       {/* </Suspense> */}
 
     </main>
