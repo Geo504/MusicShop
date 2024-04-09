@@ -8,9 +8,10 @@ import Pagination from '../Pagination/Pagination';
 import style from './Products.module.css';
 
 
-export default function Products({products}) {
+export default function Products({productsServer}) {
   const [productPerPage, setProductPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
+  const [products, setProducts] = useState(productsServer);
 
 
   useEffect(() => {
@@ -34,6 +35,24 @@ export default function Products({products}) {
   const lastIndex = currentPage * productPerPage;
   const firstIndex = lastIndex - productPerPage;
 
+
+
+  const handleSort = (value) => {
+    if (value === 'lower') {
+      const sortedProducts = [...products].sort((a, b) => a.price - b.price);
+      setProducts(sortedProducts);
+    }
+    else if (value === 'higher') {
+      const sortedProducts = [...products].sort((a, b) => b.price - a.price);
+      setProducts(sortedProducts);
+    }
+    else if (value === 'relevance') {
+      setProducts(productsServer);
+    }
+  };
+
+
+
   if ( products === undefined || products.length === 0) {
     return (
       <h2 className='text-2xl font-bold text-[#445058] min-h-[30rem] flex items-center'>
@@ -43,7 +62,7 @@ export default function Products({products}) {
   }
   return (
     <>
-    <HeaderProduct />
+    <HeaderProduct handleSort={handleSort} />
     
     <main className='px-4 pt-2 pb-4 min-w-full'>
 

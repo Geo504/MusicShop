@@ -29,7 +29,6 @@ export async function getLikes(token) {
       // credentials: 'include',
     });
     const responseData = await response.json();
-    console.log(responseData);
     return responseData;
   }
   catch (error) {

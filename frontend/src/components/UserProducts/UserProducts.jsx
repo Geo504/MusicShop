@@ -9,11 +9,12 @@ import style from './UserProducts.module.css';
 import DeleteModal from './DeleteModal/DeleteModal';
 
 
-export default function UserProducts({products}) {
+export default function UserProducts({productsServer}) {
   const [productPerPage, setProductPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [modalInfo, setModalInfo] = useState({});
+  const [products, setProducts] = useState(productsServer);
 
 
   useEffect(() => {
@@ -38,10 +39,27 @@ export default function UserProducts({products}) {
   const lastIndex = currentPage * productPerPage;
   const firstIndex = lastIndex - productPerPage;
 
+
+  const handleSort = (value) => {
+    if (value === 'lower') {
+      const sortedProducts = [...products].sort((a, b) => a.price - b.price);
+      setProducts(sortedProducts);
+    }
+    else if (value === 'higher') {
+      const sortedProducts = [...products].sort((a, b) => b.price - a.price);
+      setProducts(sortedProducts);
+    }
+    else if (value === 'relevance') {
+      setProducts(productsServer);
+    }
+  };
+
+
   const handleModal = (product) => {
     setShowModal(true);
     setModalInfo(product);
   }
+
 
 
   if ( !products || products.length === 0) {
@@ -53,7 +71,7 @@ export default function UserProducts({products}) {
   }
   return (
     <>
-    <HeaderProduct />
+    <HeaderProduct handleSort={handleSort}/>
     
     <main className='px-4 pt-2 pb-4 min-w-full'>
 

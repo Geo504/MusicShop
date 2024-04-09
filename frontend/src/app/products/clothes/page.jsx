@@ -17,7 +17,7 @@ export default async function ClothesView() {
       </header>
 
       <Suspense fallback={ <ProductList/> }>
-        <Products products={products}/>
+        <Products productsServer={products}/>
       </Suspense>
 
     </main>
