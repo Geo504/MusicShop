@@ -1,0 +1,35 @@
+.rangeInput {
+  position: absolute;
+  width: 100%;
+  top: -10px;
+  height: 10px;
+  appearance: none;
+  background: none;
+  pointer-events: none;
+}
+
+.rangeInput::-webkit-slider-thumb {
+  appearance: none;
+  width: 17px;
+  height: 17px;
+  border-radius: 20%;
+  background: #445058;
+  pointer-events: auto;
+}
+
+.inputValue {
+  width: 4rem;
+  border: 1px solid #9ca3af;
+  border-radius: 3px;
+  text-align: center;
+  background: none;
+  outline: none;
+  transition: box-shadow 0.5s;
+}
+.inputValue:focus {
+  box-shadow: 0 1px 3px 0 #73838e;
+}
+.inputValue::-webkit-outer-spin-button,
+.inputValue::-webkit-inner-spin-button {
+  appearance: none;
+}
