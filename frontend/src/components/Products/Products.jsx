@@ -51,6 +51,11 @@ export default function Products({productsServer}) {
     }
   };
 
+  const handleFilter = (minPrice, maxPrice) => {
+    const filteredProducts = productsServer.filter(product => product.price >= minPrice && product.price <= maxPrice);
+    setProducts(filteredProducts);
+  }
+
 
 
   if ( products === undefined || products.length === 0) {
@@ -62,7 +67,9 @@ export default function Products({productsServer}) {
   }
   return (
     <>
-    <HeaderProduct handleSort={handleSort} />
+    <HeaderProduct
+      handleSort={handleSort}
+      handleFilter={handleFilter} />
     
     <main className='px-4 pt-2 pb-4 min-w-full'>
 
