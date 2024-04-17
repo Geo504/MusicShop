@@ -13,13 +13,7 @@ export default function Products({productsServer}) {
   const [currentPage, setCurrentPage] = useState(1);
   const [products, setProducts] = useState(productsServer);
 
-
-
-
-
-
-
-
+  
 
   useEffect(() => {
     if (window.innerWidth<800 ) {
@@ -44,6 +38,13 @@ export default function Products({productsServer}) {
 
 
 
+  if ( productsServer === undefined) {
+    return (
+      <h2 className='text-2xl font-bold text-[#445058] min-h-[30rem] flex items-center'>
+        Something went wrong, try again later...
+      </h2>
+    )
+  }
   const maxPrice = Math.max(...productsServer.map(product => product.price));
 
   const handleSort = (value) => {
@@ -76,14 +77,6 @@ export default function Products({productsServer}) {
 
 
 
-
-  if ( productsServer === undefined) {
-    return (
-      <h2 className='text-2xl font-bold text-[#445058] min-h-[30rem] flex items-center'>
-        Something went wrong, try again later...
-      </h2>
-    )
-  }
   return (
     <>
     <HeaderProduct
