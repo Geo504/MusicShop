@@ -53,7 +53,7 @@ export default function Products({productsServer}) {
   };
 
   const handleFilter = (minPrice, maxPrice) => {
-    const filteredProducts = productsServer.filter(product => product.price >= minPrice && product.price <= maxPrice);
+    const filteredProducts = [...products].filter(product => product.price >= minPrice && product.price <= maxPrice);
     setProducts(filteredProducts);
   }
 
