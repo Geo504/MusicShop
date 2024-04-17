@@ -10,21 +10,17 @@ import DeleteModal from './DeleteModal/DeleteModal';
 
 
 export default function UserProducts({productsServer}) {
-  if ( productsServer === undefined) {
-    return (
-      <h2 className='text-2xl font-bold text-[#445058] min-h-[30rem] flex items-center'>
-        Something went wrong, try again later...
-      </h2>
-    )
-  }
-
-
-
+  
+  
+  
   const [productPerPage, setProductPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [modalInfo, setModalInfo] = useState({});
   const [products, setProducts] = useState(productsServer);
+
+  
+
 
 
   useEffect(() => {
@@ -90,6 +86,14 @@ export default function UserProducts({productsServer}) {
 
 
 
+
+  if ( productsServer === undefined) {
+    return (
+      <h2 className='text-2xl font-bold text-[#445058] min-h-[30rem] flex items-center'>
+        Something went wrong, try again later...
+      </h2>
+    )
+  }
   return (
     <>
     <HeaderProduct 
