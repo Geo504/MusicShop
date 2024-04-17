@@ -46,8 +46,9 @@ export default function Products({productsServer}) {
       const sortedProducts = [...products].sort((a, b) => b.price - a.price);
       setProducts(sortedProducts);
     }
-    else if (value === 'relevance') {
-      setProducts(productsServer);
+    else if (value === 'latest') {
+      const sortedProducts = [...products].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      setProducts(sortedProducts);
     }
   };
 

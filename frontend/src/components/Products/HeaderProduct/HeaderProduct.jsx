@@ -9,7 +9,7 @@ import { TiArrowSortedUp, TiArrowSortedDown  } from "react-icons/ti";
 
 export default function HeaderProduct({ handleSort, handleFilter }) {
   const [showSort, setShowSort] = useState(false);
-  const [selectedFilter, setSelectedFilter] = useState('relevance');
+  const [selectedFilter, setSelectedFilter] = useState('latest');
 
   const [showFilter, setShowFilter] = useState(false);
   const MAX_VALUE_LIMIT = 2000;
@@ -158,8 +158,8 @@ export default function HeaderProduct({ handleSort, handleFilter }) {
         </button>
 
         <div className={`absolute z-10 top-10 p-2 bg-[#e9e9e9ec] border-2 border-gray-700 rounded-md w-36 transition-all duration-150 overflow-hidden origin-top ${showSort?'scale-y-100':'scale-y-0'}`}>
-          <button className={`flex gap-1 items-center hover:bg-[#ffffffe3] min-w-full rounded ${selectedFilter==='relevance'?'font-bold' : ''}`} onClick={()=> handleShowSort('relevance')}>
-            <FaRegStar />Relevance
+          <button className={`flex gap-1 items-center hover:bg-[#ffffffe3] min-w-full rounded ${selectedFilter==='latest'?'font-bold' : ''}`} onClick={()=> handleShowSort('latest')}>
+            <FaRegStar />Most recent
           </button>
           <button className={`flex gap-1 items-center hover:bg-[#ffffffe3] min-w-full rounded ${selectedFilter === 'lower'?'font-bold':''}`} onClick={()=> handleShowSort('lower')}>
             <TiArrowSortedUp />Lower Price
