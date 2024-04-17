@@ -85,7 +85,8 @@ export const getUserProducts = async (req, res) => {
     const products = await Product.findAll({
       where: {
         user_id: req.user.id
-      }
+      },
+      order: [['createdAt', 'DESC']]
     });
     res.json(products);
   }

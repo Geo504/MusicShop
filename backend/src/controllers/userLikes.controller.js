@@ -27,6 +27,7 @@ export const getLikesProducts = async (req, res) => {
 
     const products = await Product.findAll({
       where: { id: LikedId },
+      order: [['createdAt', 'DESC']]
     });
     res.json(products);
   }

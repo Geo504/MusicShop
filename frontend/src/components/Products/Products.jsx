@@ -9,6 +9,16 @@ import style from './Products.module.css';
 
 
 export default function Products({productsServer}) {
+  if ( productsServer === undefined) {
+    return (
+      <h2 className='text-2xl font-bold text-[#445058] min-h-[30rem] flex items-center'>
+        Something went wrong, try again later...
+      </h2>
+    )
+  }
+
+
+
   const [productPerPage, setProductPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [products, setProducts] = useState(productsServer);
@@ -37,6 +47,8 @@ export default function Products({productsServer}) {
 
 
 
+  const maxPrice = Math.max(...productsServer.map(product => product.price));
+
   const handleSort = (value) => {
     if (value === 'lower') {
       const sortedProducts = [...products].sort((a, b) => a.price - b.price);
@@ -52,33 +64,41 @@ export default function Products({productsServer}) {
     }
   };
 
-  const handleFilter = (minPrice, maxPrice) => {
-    const filteredProducts = [...products].filter(product => product.price >= minPrice && product.price <= maxPrice);
+  const handleFilter = (minPrice, maxPrice, sortValue) => {
+    let filteredProducts = productsServer.filter(product => product.price >= minPrice && product.price <= maxPrice);
+
+    if (sortValue === 'lower') {
+      filteredProducts = filteredProducts.sort((a, b) => a.price - b.price);
+    }
+    else if (sortValue === 'higher') {
+      filteredProducts = filteredProducts.sort((a, b) => b.price - a.price);
+    }
+
     setProducts(filteredProducts);
   }
 
 
 
-  if ( products === undefined || products.length === 0) {
-    return (
-      <h2 className='text-2xl font-bold text-[#445058] min-h-[30rem] flex items-center'>
-        Not products to show... Sorry!
-      </h2>
-    )
-  }
   return (
     <>
     <HeaderProduct
       handleSort={handleSort}
-      handleFilter={handleFilter} />
+      handleFilter={handleFilter}
+      maxPrice={maxPrice} />
     
     <main className='px-4 pt-2 pb-4 min-w-full'>
 
-      <section className={style.product_container}>
-        {products.map(product =>(
-          <CardProducts key={product.id} id={product.id} product={product} />
-        )).slice(firstIndex, lastIndex)}
-      </section>
+      {products.length == 0 ?(
+        <h2 className='text-2xl font-bold text-[#445058] min-h-[30rem] flex items-center justify-center'>
+          Not products to show... Sorry!
+        </h2>
+      ):(
+        <section className={style.product_container}>
+          {products.map(product =>(
+            <CardProducts key={product.id} id={product.id} product={product} />
+          )).slice(firstIndex, lastIndex)}
+        </section>
+      )}
 
       <Pagination 
         products={products}
