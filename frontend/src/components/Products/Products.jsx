@@ -9,6 +9,12 @@ import style from './Products.module.css';
 
 
 export default function Products({productsServer}) {
+  const [productPerPage, setProductPerPage] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [products, setProducts] = useState(productsServer);
+
+
+  
   if ( productsServer === undefined) {
     return (
       <h2 className='text-2xl font-bold text-[#445058] min-h-[30rem] flex items-center'>
@@ -19,9 +25,6 @@ export default function Products({productsServer}) {
 
 
 
-  const [productPerPage, setProductPerPage] = useState(10);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [products, setProducts] = useState(productsServer);
 
 
   useEffect(() => {
