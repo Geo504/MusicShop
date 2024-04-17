@@ -13,13 +13,7 @@ export default function Products({productsServer}) {
   const [currentPage, setCurrentPage] = useState(1);
   const [products, setProducts] = useState(productsServer);
 
-
-
-
-
-
-
-
+  
 
   useEffect(() => {
     if (window.innerWidth<800 ) {
@@ -80,8 +74,6 @@ export default function Products({productsServer}) {
 
     setProducts(filteredProducts);
   }
-
-
 
 
 
