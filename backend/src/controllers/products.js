@@ -67,7 +67,8 @@ export const getProducts = async (req, res) => {
             model: User,
             attributes: ['username']
           },
-        ]
+        ],
+        order: [['createdAt', 'DESC']]
       });
     }
 

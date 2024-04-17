@@ -71,6 +71,7 @@ export default function NavBar() {
       <div className='flex gap-2'>
         <div className='flex items-center relative'>
           <input
+            id='navSearch'
             className={style.input_find}
             placeholder='Search Products'
             onChange={handleSearch}

@@ -1,8 +1,8 @@
-import { Suspense } from 'react';
+// import { Suspense } from 'react';
 
 import Products from '@/components/Products/Products';
 import { getAllProducts } from '@/services/getProducts';
-import ProductList from '@/components/Loading/ProductList';
+// import ProductList from '@/components/Loading/ProductList';
 
 
 export default async function ProductsView() {
@@ -16,9 +16,9 @@ export default async function ProductsView() {
         <p className='text-[#445058]'>See and buy all the products in the store.</p>
       </header>
 
-      <Suspense fallback={ <ProductList/> }>
+      {/* <Suspense fallback={ <ProductList/> }> */}
         <Products productsServer={products}/>
-      </Suspense>
+      {/* </Suspense> */}
     </main>
   )
 }

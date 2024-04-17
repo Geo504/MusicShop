@@ -46,10 +46,16 @@ export default function Products({productsServer}) {
       const sortedProducts = [...products].sort((a, b) => b.price - a.price);
       setProducts(sortedProducts);
     }
-    else if (value === 'relevance') {
-      setProducts(productsServer);
+    else if (value === 'latest') {
+      const sortedProducts = [...products].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      setProducts(sortedProducts);
     }
   };
+
+  const handleFilter = (minPrice, maxPrice) => {
+    const filteredProducts = productsServer.filter(product => product.price >= minPrice && product.price <= maxPrice);
+    setProducts(filteredProducts);
+  }
 
 
 
@@ -62,7 +68,9 @@ export default function Products({productsServer}) {
   }
   return (
     <>
-    <HeaderProduct handleSort={handleSort} />
+    <HeaderProduct
+      handleSort={handleSort}
+      handleFilter={handleFilter} />
     
     <main className='px-4 pt-2 pb-4 min-w-full'>
 
