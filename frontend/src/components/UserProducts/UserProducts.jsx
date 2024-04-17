@@ -20,14 +20,8 @@ export default function UserProducts({productsServer}) {
   const [products, setProducts] = useState(productsServer);
 
   
-  
-  if ( productsServer === undefined) {
-    return (
-      <h2 className='text-2xl font-bold text-[#445058] min-h-[30rem] flex items-center'>
-        Something went wrong, try again later...
-      </h2>
-    )
-  }
+
+
 
   useEffect(() => {
     if (window.innerWidth<800 ) {
@@ -92,6 +86,14 @@ export default function UserProducts({productsServer}) {
 
 
 
+
+  if ( productsServer === undefined) {
+    return (
+      <h2 className='text-2xl font-bold text-[#445058] min-h-[30rem] flex items-center'>
+        Something went wrong, try again later...
+      </h2>
+    )
+  }
   return (
     <>
     <HeaderProduct 
