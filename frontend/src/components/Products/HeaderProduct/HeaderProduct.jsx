@@ -3,16 +3,16 @@ import { useState } from 'react';
 import style from './HeaderProduct.module.css';
 import { FiFilter } from 'react-icons/fi';
 import { BiSortAlt2 } from 'react-icons/bi'
-import { FaRegStar } from "react-icons/fa";
+import { FaRegClock } from "react-icons/fa";
 import { TiArrowSortedUp, TiArrowSortedDown  } from "react-icons/ti";
 
 
-export default function HeaderProduct({ handleSort, handleFilter }) {
+export default function HeaderProduct({ handleSort, handleFilter, maxPrice }) {
   const [showSort, setShowSort] = useState(false);
   const [selectedFilter, setSelectedFilter] = useState('latest');
 
   const [showFilter, setShowFilter] = useState(false);
-  const MAX_VALUE_LIMIT = 2000;
+  const MAX_VALUE_LIMIT = maxPrice;
   const [valueMinPrice, setValueMinPrice] = useState(0);
   const [valueMaxPrice, setValueMaxPrice] = useState(MAX_VALUE_LIMIT);
   const [percent, setPercent] = useState([0,0]);
@@ -70,11 +70,11 @@ export default function HeaderProduct({ handleSort, handleFilter }) {
 
   const handleMinBlur = (e) => {
     const newMinValue = handleMinChange(e);
-    handleFilter(newMinValue, valueMaxPrice);
+    handleFilter(newMinValue, valueMaxPrice, selectedFilter);
   };
   const handleMaxBlur = (e) => {
     const newMaxValue = handleMaxChange(e);
-    handleFilter(valueMinPrice, newMaxValue);
+    handleFilter(valueMinPrice, newMaxValue, selectedFilter);
   };
 
 
@@ -107,7 +107,7 @@ export default function HeaderProduct({ handleSort, handleFilter }) {
                 max={MAX_VALUE_LIMIT}
                 value={valueMinPrice}
                 onChange={handleMinChange}
-                onMouseUp={()=> handleFilter(valueMinPrice, valueMaxPrice)}
+                onMouseUp={()=> handleFilter(valueMinPrice, valueMaxPrice, selectedFilter)}
               />
               <input
                 id='maxRange'
@@ -117,7 +117,7 @@ export default function HeaderProduct({ handleSort, handleFilter }) {
                 max={MAX_VALUE_LIMIT}
                 value={valueMaxPrice}
                 onChange={handleMaxChange}
-                onMouseUp={()=> handleFilter(valueMinPrice, valueMaxPrice)}
+                onMouseUp={()=> handleFilter(valueMinPrice, valueMaxPrice, selectedFilter)}
               />
             </div>
 
@@ -159,7 +159,7 @@ export default function HeaderProduct({ handleSort, handleFilter }) {
 
         <div className={`absolute z-10 top-10 p-2 bg-[#e9e9e9ec] border-2 border-gray-700 rounded-md w-36 transition-all duration-150 overflow-hidden origin-top ${showSort?'scale-y-100':'scale-y-0'}`}>
           <button className={`flex gap-1 items-center hover:bg-[#ffffffe3] min-w-full rounded ${selectedFilter==='latest'?'font-bold' : ''}`} onClick={()=> handleShowSort('latest')}>
-            <FaRegStar />Most recent
+            <FaRegClock   />Most recent
           </button>
           <button className={`flex gap-1 items-center hover:bg-[#ffffffe3] min-w-full rounded ${selectedFilter === 'lower'?'font-bold':''}`} onClick={()=> handleShowSort('lower')}>
             <TiArrowSortedUp />Lower Price

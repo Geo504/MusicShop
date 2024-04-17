@@ -10,6 +10,16 @@ import DeleteModal from './DeleteModal/DeleteModal';
 
 
 export default function UserProducts({productsServer}) {
+  if ( productsServer === undefined) {
+    return (
+      <h2 className='text-2xl font-bold text-[#445058] min-h-[30rem] flex items-center'>
+        Something went wrong, try again later...
+      </h2>
+    )
+  }
+
+
+
   const [productPerPage, setProductPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
@@ -40,6 +50,9 @@ export default function UserProducts({productsServer}) {
   const firstIndex = lastIndex - productPerPage;
 
 
+
+  const maxPrice = Math.max(...productsServer.map(product => product.price));
+
   const handleSort = (value) => {
     if (value === 'lower') {
       const sortedProducts = [...products].sort((a, b) => a.price - b.price);
@@ -49,10 +62,25 @@ export default function UserProducts({productsServer}) {
       const sortedProducts = [...products].sort((a, b) => b.price - a.price);
       setProducts(sortedProducts);
     }
-    else if (value === 'relevance') {
-      setProducts(productsServer);
+    else if (value === 'latest') {
+      const sortedProducts = [...products].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      setProducts(sortedProducts);
     }
   };
+
+  const handleFilter = (minPrice, maxPrice, sortValue) => {
+    let filteredProducts = productsServer.filter(product => product.price >= minPrice && product.price <= maxPrice);
+
+    if (sortValue === 'lower') {
+      filteredProducts = filteredProducts.sort((a, b) => a.price - b.price);
+    }
+    else if (sortValue === 'higher') {
+      filteredProducts = filteredProducts.sort((a, b) => b.price - a.price);
+    }
+
+    setProducts(filteredProducts);
+  }
+
 
 
   const handleModal = (product) => {
@@ -62,24 +90,26 @@ export default function UserProducts({productsServer}) {
 
 
 
-  if ( !products || products.length === 0) {
-    return (
-      <h2 className='text-2xl font-bold text-[#445058] min-h-[30rem] flex items-center'>
-        Not products to show... Sorry!
-      </h2>
-    )
-  }
   return (
     <>
-    <HeaderProduct handleSort={handleSort}/>
+    <HeaderProduct 
+      handleSort={handleSort}
+      handleFilter={handleFilter}
+      maxPrice={maxPrice} />
     
     <main className='px-4 pt-2 pb-4 min-w-full'>
 
-      <section className={style.product_container}>
-        {products.map(product =>(
-          <CardUserProduct key={product.id} product={product} handleModal={handleModal}/>
-        )).slice(firstIndex, lastIndex)}
-      </section>
+      {products.length === 0 ?(
+        <h2 className='text-2xl font-bold text-[#445058] min-h-[30rem] flex items-center justify-center'>
+          Not products to show... Sorry!
+        </h2>
+      ) : (
+        <section className={style.product_container}>
+          {products.map(product =>(
+            <CardUserProduct key={product.id} product={product} handleModal={handleModal}/>
+          )).slice(firstIndex, lastIndex)}
+        </section>
+      )}
 
       <Pagination 
         products={products}
