@@ -4,10 +4,13 @@ import morgan from 'morgan';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
+import passport from 'passport';
+import session from 'express-session';
 
 import usersRouter from './routes/user.js';
 import productsRouter from './routes/products.js';
 import userLikes from './routes/userLikes.routes.js';
+import './libs/passport.js';
 
 dotenv.config();
 
@@ -17,6 +20,14 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(fileUpload());
 app.use(cookieParser());
+
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 app.use(cors({

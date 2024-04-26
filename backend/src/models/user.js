@@ -7,27 +7,28 @@ export const User = sequelize.define('users',{
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
-    autoIncrement: true
+    autoIncrement: true,
   },
   username: {
     type: DataTypes.STRING(25),
     allowNull: false,
-    trim: true
+    trim: true,
   },
   email: {
     type: DataTypes.STRING(40),
     allowNull: false,
     trim: true,
-    unique: true
+    unique: true,
   },
   password: {
     type: DataTypes.STRING(200),
-    allowNull: false
+    allowNull: true,
+    defaultValue: null,
   },
   is_active: {
     type: DataTypes.BOOLEAN,
     allowNull: false,
-    defaultValue: false
+    defaultValue: false,
   }
 })
 
