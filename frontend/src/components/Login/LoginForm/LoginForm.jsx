@@ -66,6 +66,15 @@ export default function LoginForm() {
   });
 
 
+
+  const handleGoogleAuth = async() => {
+    window.open(
+			`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/google/callback`,
+			"_self"
+		);
+  }
+
+
   return (
     <div className={style.form_container}>
       <h1 className='text-4xl font-bold'>
@@ -76,7 +85,7 @@ export default function LoginForm() {
         <p className='text-sm mb-2 text-center'>Choose your preferred login method:</p>
         
         <div className='flex gap-2 justify-center'>
-          <button className={style.social_web_btn}>
+          <button className={style.social_web_btn} onClick={handleGoogleAuth}>
             <AiOutlineGoogle className='text-lg' />
             Google
           </button>

@@ -1,10 +1,11 @@
 'use client'
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import Cookies from "js-cookie";
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 
 import { getUser } from '../services/getUser.js';
 import { getLikes ,updateLikes } from '../services/userLikes.js';
+import { getGoogleAuth } from '../services/getAuth.js';
 
 const AppContext = createContext();
 
@@ -30,20 +31,30 @@ export const AppProvider = ({ children }) => {
     }
   }
 
-  // async function getUserLikes() {
-  //   const res = await getLikes()
-  //   if (res) {
-  //     return setLikes(res);
-  //   }
-  // }
+  const authenticateGoogleUser = async () => {
+    try {
+      const user = await getGoogleAuth(setToken);
+      if (user) {setUserInfo(user)}
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
 
 
   useEffect(() => {
     const cookies = Cookies.get()
+    const isRootPath = window.location.pathname === '/';
+    const googleAuth = new URLSearchParams(window.location.search).get('googleAuth');
+
     if (cookies.token){
       getUserInfo(cookies.token);
       setToken(cookies.token);
+    }
+
+    if (isRootPath && !cookies.token && googleAuth === 'true') {
+      authenticateGoogleUser();
+      window.history.replaceState({}, document.title, window.location.origin + '/');
     }
   }, []);
 
