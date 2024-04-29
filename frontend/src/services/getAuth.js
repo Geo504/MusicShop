@@ -27,3 +27,28 @@ export async function getAuth(data, setToken) {
     console.log(error);
   }
 }
+
+
+
+export async function getGoogleAuth( setToken, setUserInfo ) {
+  try{
+    const response = await fetch(`/api/auth/google/success`, {
+      method: 'GET',
+      credentials: 'include',
+    });
+    if (response.status !== 200) {
+      return null;
+    }
+    else {
+      const authHeader = response.headers.get('Authorization');
+      const token = authHeader && authHeader.split(' ')[1];
+      setToken(token);
+  
+      const responseData = await response.json();
+      return responseData;
+    }
+  }
+  catch (error) {
+    console.log(error);
+  }
+}
