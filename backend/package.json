@@ -6,7 +6,6 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon src/index.js",
-    "build": "npm run migration && npm run start",
     "start": "node src/index.js",
     "migration": "npx sequelize-cli db:migrate",
     "down": "npx sequelize-cli db:migrate:undo"
