@@ -1,6 +1,6 @@
 export async function getAuth(data, setToken) {
   try{
-    const response = await fetch(`/api/login`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/login`, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {'Content-Type': 'application/json',},
@@ -32,7 +32,7 @@ export async function getAuth(data, setToken) {
 
 export async function getGoogleAuth( setToken, setUserInfo ) {
   try{
-    const response = await fetch(`/api/auth/google/success`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/google/success`, {
       method: 'GET',
       credentials: 'include',
     });
