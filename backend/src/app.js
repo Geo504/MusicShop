@@ -6,11 +6,14 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import passport from 'passport';
 import session from 'express-session';
+import SequelizeStoreInit from 'connect-session-sequelize';
+const SequelizeStore = SequelizeStoreInit(session.Store);
 
 import usersRouter from './routes/user.js';
 import productsRouter from './routes/products.js';
 import userLikes from './routes/userLikes.routes.js';
 import './libs/passport.js';
+import { sequelize } from './db/db.js';
 
 dotenv.config();
 
@@ -25,6 +28,9 @@ app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
+  store: new SequelizeStore({
+    db: sequelize,
+  }),
   cookie: {
     // secure: true,
     sameSite: 'none'
