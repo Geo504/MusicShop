@@ -38,7 +38,7 @@ export const login = async (req, res) => {
 
 export const googleCallback = passport.authenticate('google', { 
   successRedirect: `${process.env.FRONTEND_URL}?googleAuth=true`,
-  failureRedirect: "/api/auth/login/failed",
+  failureRedirect: `${process.env.FRONTEND_URL}/login`,
 });
 
 export const loginSuccess = async (req, res) => {
