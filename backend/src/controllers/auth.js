@@ -62,6 +62,7 @@ export const loginSuccess = async (req, res) => {
         email: user.email,
       });
     } else {
+      console.log(req.user);
       res.status(403).json({ message: 'Not Authorized' });
     }
   }
